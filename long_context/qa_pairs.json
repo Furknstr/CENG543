@@ -1,0 +1,387 @@
+[
+  {
+    "qid": "1706.03762_q1",
+    "doc_id": "1706.03762",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1706.03762_q2",
+    "doc_id": "1706.03762",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1706.03762_q3",
+    "doc_id": "1706.03762",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1706.03762_q4",
+    "doc_id": "1706.03762",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1706.03762_q5",
+    "doc_id": "1706.03762",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1810.04805_q1",
+    "doc_id": "1810.04805",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1810.04805_q2",
+    "doc_id": "1810.04805",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1810.04805_q3",
+    "doc_id": "1810.04805",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1810.04805_q4",
+    "doc_id": "1810.04805",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1810.04805_q5",
+    "doc_id": "1810.04805",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.01108_q1",
+    "doc_id": "1910.01108",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.01108_q2",
+    "doc_id": "1910.01108",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.01108_q3",
+    "doc_id": "1910.01108",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.01108_q4",
+    "doc_id": "1910.01108",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.01108_q5",
+    "doc_id": "1910.01108",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1909.11942_q1",
+    "doc_id": "1909.11942",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1909.11942_q2",
+    "doc_id": "1909.11942",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1909.11942_q3",
+    "doc_id": "1909.11942",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1909.11942_q4",
+    "doc_id": "1909.11942",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1909.11942_q5",
+    "doc_id": "1909.11942",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1907.11692_q1",
+    "doc_id": "1907.11692",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1907.11692_q2",
+    "doc_id": "1907.11692",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1907.11692_q3",
+    "doc_id": "1907.11692",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1907.11692_q4",
+    "doc_id": "1907.11692",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1907.11692_q5",
+    "doc_id": "1907.11692",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2005.14165_q1",
+    "doc_id": "2005.14165",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2005.14165_q2",
+    "doc_id": "2005.14165",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2005.14165_q3",
+    "doc_id": "2005.14165",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2005.14165_q4",
+    "doc_id": "2005.14165",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2005.14165_q5",
+    "doc_id": "2005.14165",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2010.11929_q1",
+    "doc_id": "2010.11929",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2010.11929_q2",
+    "doc_id": "2010.11929",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2010.11929_q3",
+    "doc_id": "2010.11929",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2010.11929_q4",
+    "doc_id": "2010.11929",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2010.11929_q5",
+    "doc_id": "2010.11929",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2103.00020_q1",
+    "doc_id": "2103.00020",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2103.00020_q2",
+    "doc_id": "2103.00020",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2103.00020_q3",
+    "doc_id": "2103.00020",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2103.00020_q4",
+    "doc_id": "2103.00020",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2103.00020_q5",
+    "doc_id": "2103.00020",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.10683_q1",
+    "doc_id": "1910.10683",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.10683_q2",
+    "doc_id": "1910.10683",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.10683_q3",
+    "doc_id": "1910.10683",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.10683_q4",
+    "doc_id": "1910.10683",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "1910.10683_q5",
+    "doc_id": "1910.10683",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2106.09685_q1",
+    "doc_id": "2106.09685",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2106.09685_q2",
+    "doc_id": "2106.09685",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2106.09685_q3",
+    "doc_id": "2106.09685",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2106.09685_q4",
+    "doc_id": "2106.09685",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "2106.09685_q5",
+    "doc_id": "2106.09685",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "gutenberg_1342_q1",
+    "doc_id": "gutenberg_1342",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "gutenberg_1342_q2",
+    "doc_id": "gutenberg_1342",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "gutenberg_1342_q3",
+    "doc_id": "gutenberg_1342",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "gutenberg_1342_q4",
+    "doc_id": "gutenberg_1342",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  },
+  {
+    "qid": "gutenberg_1342_q5",
+    "doc_id": "gutenberg_1342",
+    "question": "SORU_BURAYA",
+    "answer": "CEVAP_BURAYA",
+    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+  }
+]
