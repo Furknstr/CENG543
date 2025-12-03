@@ -5,9 +5,7 @@
     "question": "Which mechanism that prevents parallelization during training did the Transformer architecture dispense with?",
     "answer": "The Transformer architecture dispensed with recurrence and relied entirely on an attention mechanism.",
     "gold_chunk_snippet": "eschewing recurrence and instead relying entirely on an attention mechanism",
-    "gold_para_ids": [
-      9
-    ]
+    "gold_para_ids": [9]
   },
   {
     "qid": "1706.03762_q2",
@@ -15,9 +13,7 @@
     "question": "What was added to the system to enable the model to make use of the order of tokens in the sequence?",
     "answer": "Positional Encodings were added to inject information about the relative or absolute position of the tokens.",
     "gold_chunk_snippet": "inject some information about the relative or absolute position of the tokens in the sequence",
-    "gold_para_ids": [
-      42
-    ]
+    "gold_para_ids": [42]
   },
   {
     "qid": "1706.03762_q3",
@@ -25,9 +21,7 @@
     "question": "How many identical layers does the Encoder stack consist of?",
     "answer": "The Encoder stack is composed of 6 identical layers.",
     "gold_chunk_snippet": "composed of a stack of N = 6 identical layers",
-    "gold_para_ids": [
-      16
-    ]
+    "gold_para_ids": [16]
   },
   {
     "qid": "1706.03762_q4",
@@ -35,9 +29,7 @@
     "question": "Which function mathematically describes the attention mechanism?",
     "answer": "It is described as mapping a query and a set of key-value pairs to an output.",
     "gold_chunk_snippet": "mapping a query and a set of key-value pairs to an output",
-    "gold_para_ids": [
-      18
-    ]
+    "gold_para_ids": [18]
   },
   {
     "qid": "1706.03762_q5",
@@ -45,9 +37,7 @@
     "question": "What BLEU score did the big Transformer model establish as the new state-of-the-art on the English-to-German task?",
     "answer": "It established a new state-of-the-art BLEU score of 28.4.",
     "gold_chunk_snippet": "establishing a new state-of-the-art BLEU score of 28.4",
-    "gold_para_ids": [
-      66
-    ]
+    "gold_para_ids": [66]
   },
   {
     "qid": "gutenberg_1342_q1",
@@ -55,9 +45,7 @@
     "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
     "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
     "gold_chunk_snippet": "truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
-    "gold_para_ids": [
-      0
-    ]
+    "gold_para_ids": [455]
   },
   {
     "qid": "gutenberg_1342_q2",
@@ -65,9 +53,7 @@
     "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
     "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
     "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
-    "gold_para_ids": [
-      14
-    ]
+    "gold_para_ids": [493]
   },
   {
     "qid": "gutenberg_1342_q3",
@@ -75,9 +61,7 @@
     "question": "Why did Darcy refuse to dance with Elizabeth at the ball?",
     "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
     "gold_chunk_snippet": "She is tolerable, but not handsome enough to tempt me",
-    "gold_para_ids": [
-      67
-    ]
+    "gold_para_ids": [641]
   },
   {
     "qid": "gutenberg_1342_q4",
@@ -85,9 +69,7 @@
     "question": "Why did Charlotte Lucas accept the proposal to marry Mr. Collins?",
     "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
     "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
-    "gold_para_ids": [
-      1587
-    ]
+    "gold_para_ids": [3332]
   },
   {
     "qid": "gutenberg_1342_q5",
@@ -95,8 +77,6 @@
     "question": "What did Lady Catherine de Bourgh demand from Elizabeth during her visit?",
     "answer": "She demanded her to promise never to enter into an engagement with her nephew, Mr. Darcy.",
     "gold_chunk_snippet": "promise me never to enter into such an engagement",
-    "gold_para_ids": [
-      4966
-    ]
+    "gold_para_ids": [8967]
   }
 ]
