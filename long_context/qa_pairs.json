@@ -2,386 +2,101 @@
   {
     "qid": "1706.03762_q1",
     "doc_id": "1706.03762",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "Which mechanism that prevents parallelization during training did the Transformer architecture dispense with?",
+    "answer": "The Transformer architecture dispensed with recurrence and relied entirely on an attention mechanism.",
+    "gold_chunk_snippet": "eschewing recurrence and instead relying entirely on an attention mechanism",
+    "gold_para_ids": [
+      9
+    ]
   },
   {
     "qid": "1706.03762_q2",
     "doc_id": "1706.03762",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "What was added to the system to enable the model to make use of the order of tokens in the sequence?",
+    "answer": "Positional Encodings were added to inject information about the relative or absolute position of the tokens.",
+    "gold_chunk_snippet": "inject some information about the relative or absolute position of the tokens in the sequence",
+    "gold_para_ids": [
+      42
+    ]
   },
   {
     "qid": "1706.03762_q3",
     "doc_id": "1706.03762",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "How many identical layers does the Encoder stack consist of?",
+    "answer": "The Encoder stack is composed of 6 identical layers.",
+    "gold_chunk_snippet": "composed of a stack of N = 6 identical layers",
+    "gold_para_ids": [
+      16
+    ]
   },
   {
     "qid": "1706.03762_q4",
     "doc_id": "1706.03762",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "Which function mathematically describes the attention mechanism?",
+    "answer": "It is described as mapping a query and a set of key-value pairs to an output.",
+    "gold_chunk_snippet": "mapping a query and a set of key-value pairs to an output",
+    "gold_para_ids": [
+      18
+    ]
   },
   {
     "qid": "1706.03762_q5",
     "doc_id": "1706.03762",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1810.04805_q1",
-    "doc_id": "1810.04805",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1810.04805_q2",
-    "doc_id": "1810.04805",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1810.04805_q3",
-    "doc_id": "1810.04805",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1810.04805_q4",
-    "doc_id": "1810.04805",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1810.04805_q5",
-    "doc_id": "1810.04805",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.01108_q1",
-    "doc_id": "1910.01108",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.01108_q2",
-    "doc_id": "1910.01108",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.01108_q3",
-    "doc_id": "1910.01108",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.01108_q4",
-    "doc_id": "1910.01108",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.01108_q5",
-    "doc_id": "1910.01108",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1909.11942_q1",
-    "doc_id": "1909.11942",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1909.11942_q2",
-    "doc_id": "1909.11942",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1909.11942_q3",
-    "doc_id": "1909.11942",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1909.11942_q4",
-    "doc_id": "1909.11942",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1909.11942_q5",
-    "doc_id": "1909.11942",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1907.11692_q1",
-    "doc_id": "1907.11692",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1907.11692_q2",
-    "doc_id": "1907.11692",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1907.11692_q3",
-    "doc_id": "1907.11692",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1907.11692_q4",
-    "doc_id": "1907.11692",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1907.11692_q5",
-    "doc_id": "1907.11692",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2005.14165_q1",
-    "doc_id": "2005.14165",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2005.14165_q2",
-    "doc_id": "2005.14165",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2005.14165_q3",
-    "doc_id": "2005.14165",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2005.14165_q4",
-    "doc_id": "2005.14165",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2005.14165_q5",
-    "doc_id": "2005.14165",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2010.11929_q1",
-    "doc_id": "2010.11929",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2010.11929_q2",
-    "doc_id": "2010.11929",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2010.11929_q3",
-    "doc_id": "2010.11929",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2010.11929_q4",
-    "doc_id": "2010.11929",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2010.11929_q5",
-    "doc_id": "2010.11929",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2103.00020_q1",
-    "doc_id": "2103.00020",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2103.00020_q2",
-    "doc_id": "2103.00020",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2103.00020_q3",
-    "doc_id": "2103.00020",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2103.00020_q4",
-    "doc_id": "2103.00020",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2103.00020_q5",
-    "doc_id": "2103.00020",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.10683_q1",
-    "doc_id": "1910.10683",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.10683_q2",
-    "doc_id": "1910.10683",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.10683_q3",
-    "doc_id": "1910.10683",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.10683_q4",
-    "doc_id": "1910.10683",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "1910.10683_q5",
-    "doc_id": "1910.10683",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2106.09685_q1",
-    "doc_id": "2106.09685",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2106.09685_q2",
-    "doc_id": "2106.09685",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2106.09685_q3",
-    "doc_id": "2106.09685",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2106.09685_q4",
-    "doc_id": "2106.09685",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
-  },
-  {
-    "qid": "2106.09685_q5",
-    "doc_id": "2106.09685",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "What BLEU score did the big Transformer model establish as the new state-of-the-art on the English-to-German task?",
+    "answer": "It established a new state-of-the-art BLEU score of 28.4.",
+    "gold_chunk_snippet": "establishing a new state-of-the-art BLEU score of 28.4",
+    "gold_para_ids": [
+      66
+    ]
   },
   {
     "qid": "gutenberg_1342_q1",
     "doc_id": "gutenberg_1342",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
+    "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
+    "gold_chunk_snippet": "truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
+    "gold_para_ids": [
+      0
+    ]
   },
   {
     "qid": "gutenberg_1342_q2",
     "doc_id": "gutenberg_1342",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
+    "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
+    "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
+    "gold_para_ids": [
+      14
+    ]
   },
   {
     "qid": "gutenberg_1342_q3",
     "doc_id": "gutenberg_1342",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "Why did Darcy refuse to dance with Elizabeth at the ball?",
+    "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
+    "gold_chunk_snippet": "She is tolerable, but not handsome enough to tempt me",
+    "gold_para_ids": [
+      67
+    ]
   },
   {
     "qid": "gutenberg_1342_q4",
     "doc_id": "gutenberg_1342",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "Why did Charlotte Lucas accept the proposal to marry Mr. Collins?",
+    "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
+    "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
+    "gold_para_ids": [
+      1587
+    ]
   },
   {
     "qid": "gutenberg_1342_q5",
     "doc_id": "gutenberg_1342",
-    "question": "SORU_BURAYA",
-    "answer": "CEVAP_BURAYA",
-    "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
+    "question": "What did Lady Catherine de Bourgh demand from Elizabeth during her visit?",
+    "answer": "She demanded her to promise never to enter into an engagement with her nephew, Mr. Darcy.",
+    "gold_chunk_snippet": "promise me never to enter into such an engagement",
+    "gold_para_ids": [
+      4966
+    ]
   }
 ]

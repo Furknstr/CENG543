@@ -1,4 +1,4 @@
-    # dataset_faz1.py
+# dataset_faz1.py
 # Faz 1: Veri Hazırlığı ve Ground-Truth için altyapı
 # Gerekli paketler:
 #   pip install arxiv pymupdf requests
@@ -59,9 +59,13 @@ def setup_dirs(base_dir: str):
 # ==========================
 
 def download_arxiv_pdf(arxiv_id: str, dest_dir: str) -> str | None:
+    # Eğer dosya zaten varsa indirme
+    pdf_path = os.path.join(dest_dir, f"{arxiv_id}.pdf")
+    if os.path.exists(pdf_path):
+        return pdf_path
+
     search = arxiv.Search(id_list=[arxiv_id])
     for result in search.results():
-        pdf_path = os.path.join(dest_dir, f"{arxiv_id}.pdf")
         result.download_pdf(filename=pdf_path)
         return pdf_path
     return None
@@ -72,11 +76,18 @@ def download_arxiv_pdf(arxiv_id: str, dest_dir: str) -> str | None:
 # ==========================
 
 def download_gutenberg_txt(book_id: str, title: str, dest_dir: str) -> str:
+    fname = f"gutenberg_{book_id}_{title.replace(' ', '_')}.txt"
+    out_path = os.path.join(dest_dir, fname)
+    
+    # Zaten varsa indirme
+    if os.path.exists(out_path):
+        return out_path
+
     url = f"https://www.gutenberg.org/files/{book_id}/{book_id}-0.txt"
     resp = requests.get(url)
     resp.raise_for_status()
-    fname = f"gutenberg_{book_id}_{title.replace(' ', '_')}.txt"
-    out_path = os.path.join(dest_dir, fname)
+    resp.encoding = 'utf-8' # Encoding'i garantiye al
+    
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(resp.text)
     return out_path
@@ -91,32 +102,65 @@ def pdf_to_text(pdf_path: str) -> str:
     text_out = []
     for page in doc:
         blocks = page.get_text("blocks") 
+        # Blokları yukarıdan aşağıya, soldan sağa sırala (çift sütun desteği)
         blocks.sort(key=lambda b: (b[1], b[0])) 
         for b in blocks:
+            # Header/Footer temizliği için basit kontrol (sayfanın en tepesi ve en altı)
+            if b[1] < 50 or b[3] > page.rect.height - 50:
+                continue
             text_out.append(b[4])
     doc.close()
     return "\n\n".join(text_out)
 
 
 # ==========================
-# TEMİZLEME
+# TEMİZLEME (GENEL & GUTENBERG)
 # ==========================
 
 def clean_text(text: str) -> str:
-    # satır sonlarını normalize et
+    """Arxiv makaleleri için genel temizlik."""
     text = text.replace("\r", "\n")
-    # 3+ boş satırı 2 satıra indir
+    # Çoklu boş satırları koru ama abartma (paragraf ayrımı için \n\n önemli)
     text = re.sub(r"\n{3,}", "\n\n", text)
-    # satır sonu boşluklarını sil
+    # Satır başı/sonu boşlukları temizle
     lines = [ln.strip() for ln in text.split("\n")]
     text = "\n".join(lines)
     return text
 
+def clean_gutenberg_text(text: str) -> str:
+    """Kitaplar için özel temizlik: Header/Footer atar."""
+    # 1. Satır sonlarını düzelt
+    text = text.replace('\r', '\n')
+    
+    # 2. Gutenberg Header Temizliği
+    # Genelde "*** START OF THE PROJECT..." ile başlar
+    start_marker = "*** START OF THE PROJECT"
+    idx = text.find(start_marker)
+    if idx != -1:
+        # Marker'dan sonraki satıra geç
+        text = text[idx:]
+        # Marker satırının bitimini bul
+        newline_idx = text.find('\n')
+        if newline_idx != -1:
+            text = text[newline_idx+1:]
+            
+    # 3. Gutenberg Footer Temizliği
+    end_marker = "*** END OF THE PROJECT"
+    idx_end = text.find(end_marker)
+    if idx_end != -1:
+        text = text[:idx_end]
+
+    # 4. Fazla boşlukları indirgeme
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text
+
 
 def save_clean_text(raw_text: str, out_path: str):
-    cleaned = clean_text(raw_text)
+    # Eğer dosya zaten varsa tekrar yazma (performans için)
+    if os.path.exists(out_path):
+        return
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(cleaned)
+        f.write(raw_text)
 
 
 # ==========================
@@ -124,10 +168,14 @@ def save_clean_text(raw_text: str, out_path: str):
 # ==========================
 
 def text_to_paragraphs(text: str, min_len: int = 50) -> list[str]:
+    # Çift enter'a göre böl
     blocks = text.split("\n\n")
     paras = []
     for b in blocks:
-        t = b.strip()
+        # Satır içi enterları boşluğa çevir (tek paragraf tek satır olsun)
+        t = b.replace('\n', ' ').strip()
+        t = re.sub(r'\s+', ' ', t) # çift boşlukları sil
+        
         if len(t) >= min_len:
             paras.append(t)
     return paras
@@ -139,10 +187,17 @@ def write_paragraphs_jsonl(
     out_jsonl_path: str,
     min_len: int = 50
 ):
+    if not os.path.exists(cleaned_txt_path):
+        print(f"❌ HATA: Dosya bulunamadı -> {cleaned_txt_path}")
+        return
+
     with open(cleaned_txt_path, "r", encoding="utf-8") as f:
         text = f.read()
 
     paras = text_to_paragraphs(text, min_len=min_len)
+
+    if not paras:
+        print(f"⚠️ UYARI: {doc_id} dosyasından hiç paragraf çıkmadı! Temizlik fonksiyonunu kontrol et.")
 
     # append modunda yaz
     with open(out_jsonl_path, "a", encoding="utf-8") as out_f:
@@ -153,6 +208,8 @@ def write_paragraphs_jsonl(
                 "text": p
             }
             out_f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    
+    print(f"✅ {doc_id}: {len(paras)} paragraf eklendi.")
 
 
 # ==========================
@@ -168,13 +225,14 @@ def init_empty_qa(base_dir: str, doc_ids: list) -> str:
 
     qa_skeleton = []
     for doc_id in doc_ids:
+        # Her doküman için 5 soru şablonu
         for i in range(1, 6):
             qa_skeleton.append({
                 "qid": f"{doc_id}_q{i}",
                 "doc_id": doc_id,
                 "question": "SORU_BURAYA",
                 "answer": "CEVAP_BURAYA",
-                "gold_chunk_snippet": "REFERANS_METIN_BURAYA" # Cevabın geçtiği cümleyi buraya yapıştıracaksın
+                "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
             })
             
     with open(qa_path, "w", encoding="utf-8") as f:
@@ -198,54 +256,49 @@ def run_faz1():
     # 1) arXiv PDF'leri indir
     pdf_paths: dict[str, str | None] = {}
     for aid in ARXIV_IDS:
-        print(f"[INFO] Downloading arXiv {aid} ...")
+        print(f"[INFO] Downloading/Checking arXiv {aid} ...")
         path = download_arxiv_pdf(aid, docs_dir)
         pdf_paths[aid] = path
-        print(f"      → {path}")
 
     # 2) Gutenberg kitabını indir
-    print(f"[INFO] Downloading Gutenberg book {GUTENBERG_BOOK['id']} ...")
+    print(f"[INFO] Downloading/Checking Gutenberg book {GUTENBERG_BOOK['id']} ...")
     book_txt = download_gutenberg_txt(
         GUTENBERG_BOOK["id"],
         GUTENBERG_BOOK["title"],
         docs_dir
     )
-    print(f"      → {book_txt}")
 
     # 3) PDF → text ve temizlenmiş txt kaydet
     for aid, pdf_path in pdf_paths.items():
         if pdf_path is None:
-            print(f"[WARN] No PDF for {aid}")
             continue
-        print(f"[INFO] PDF to text for {aid} ...")
+        # print(f"[INFO] Processing {aid} ...")
         raw_txt = pdf_to_text(pdf_path)
         out_clean_path = os.path.join(raw_dir, f"{aid}_clean.txt")
-        save_clean_text(raw_txt, out_clean_path)
-        print(f"      → {out_clean_path}")
+        save_clean_text(clean_text(raw_txt), out_clean_path)
 
-    # 4) Kitap txt’sini temizle
+    # 4) Kitap txt’sini temizle (Gutenberg Temizleyici ile!)
     print("[INFO] Cleaning Gutenberg book text ...")
     with open(book_txt, "r", encoding="utf-8") as f:
         book_raw = f.read()
+    
     book_clean_path = os.path.join(
         raw_dir,
         f"gutenberg_{GUTENBERG_BOOK['id']}_clean.txt"
     )
-    save_clean_text(book_raw, book_clean_path)
+    # Burada özel Gutenberg temizleyicisini kullanıyoruz
+    save_clean_text(clean_gutenberg_text(book_raw), book_clean_path)
     print(f"      → {book_clean_path}")
 
     # 5) paragraphs.jsonl üret
     paragraphs_jsonl = os.path.join(para_dir, "paragraphs.jsonl")
-    # varsa eskiyi sil
+    # Dosyayı sıfırla (overwrite)
     if os.path.exists(paragraphs_jsonl):
         os.remove(paragraphs_jsonl)
 
     print("[INFO] Writing paragraphs for arXiv docs ...")
     for aid in ARXIV_IDS:
         clean_path = os.path.join(raw_dir, f"{aid}_clean.txt")
-        if not os.path.exists(clean_path):
-            print(f"[WARN] Clean text not found for {aid}, skipping.")
-            continue
         write_paragraphs_jsonl(
             cleaned_txt_path=clean_path,
             doc_id=aid,
@@ -254,22 +307,20 @@ def run_faz1():
         )
 
     print("[INFO] Writing paragraphs for Gutenberg book ...")
+    # Kitabın temizlenmiş yolunu kullanarak jsonl'e ekle
     write_paragraphs_jsonl(
         cleaned_txt_path=book_clean_path,
         doc_id=f"gutenberg_{GUTENBERG_BOOK['id']}",
         out_jsonl_path=paragraphs_jsonl,
-        min_len=80  
+        min_len=80  # Roman paragrafları genelde biraz daha uzundur
     )
 
     all_doc_ids = ARXIV_IDS + [f"gutenberg_{GUTENBERG_BOOK['id']}"]
-    
     qa_path = init_empty_qa(dirs["BASE"], all_doc_ids)
 
-    print("[DONE] Faz 1 tamamlandı.")
-    print(f"       Docs dir:        {docs_dir}")
-    print(f"       Raw txt dir:     {raw_dir}")
-    print(f"       Paragraphs json: {paragraphs_jsonl}")
-    print(f"       QA file:         {qa_path}")
+    print("\n[DONE] Faz 1 tamamlandı.")
+    print(f"       Paragraphs: {paragraphs_jsonl}")
+    print(f"       QA Skeleton: {qa_path}")
 
 
 if __name__ == "__main__":
