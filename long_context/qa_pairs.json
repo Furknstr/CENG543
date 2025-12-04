@@ -39,13 +39,15 @@
     "gold_chunk_snippet": "establishing a new state-of-the-art BLEU score of 28.4",
     "gold_para_ids": [66]
   },
-  {
+{
     "qid": "gutenberg_1342_q1",
     "doc_id": "gutenberg_1342",
     "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
     "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
     "gold_chunk_snippet": "truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
-    "gold_para_ids": [455]
+    "gold_para_ids": [
+      147
+    ]
   },
   {
     "qid": "gutenberg_1342_q2",
@@ -53,7 +55,25 @@
     "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
     "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
     "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
-    "gold_para_ids": [493]
+    "gold_para_ids": [
+      151
+    ]
+  },
+  {
+    "qid": "gutenberg_1342_q1",
+    "doc_id": "gutenberg_1342",
+    "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
+    "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
+    "gold_chunk_snippet": "truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
+    "gold_para_ids": [17]
+  },
+  {
+    "qid": "gutenberg_1342_q2",
+    "doc_id": "gutenberg_1342",
+    "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
+    "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
+    "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
+    "gold_para_ids": [31]
   },
   {
     "qid": "gutenberg_1342_q3",
@@ -61,7 +81,7 @@
     "question": "Why did Darcy refuse to dance with Elizabeth at the ball?",
     "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
     "gold_chunk_snippet": "She is tolerable, but not handsome enough to tempt me",
-    "gold_para_ids": [641]
+    "gold_para_ids": [71]
   },
   {
     "qid": "gutenberg_1342_q4",
@@ -69,14 +89,16 @@
     "question": "Why did Charlotte Lucas accept the proposal to marry Mr. Collins?",
     "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
     "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
-    "gold_para_ids": [3332]
+    "gold_para_ids": [604]
   },
   {
     "qid": "gutenberg_1342_q5",
     "doc_id": "gutenberg_1342",
-    "question": "What did Lady Catherine de Bourgh demand from Elizabeth during her visit?",
-    "answer": "She demanded her to promise never to enter into an engagement with her nephew, Mr. Darcy.",
-    "gold_chunk_snippet": "promise me never to enter into such an engagement",
-    "gold_para_ids": [8967]
+    "question": "What was the specific reason Lady Catherine de Bourgh gave for travelling to Longbourn to visit Elizabeth Bennet?",
+    "answer": "She came to confront Elizabeth about an 'alarming' report she had heard, stating that Elizabeth was soon to be united with her nephew, Mr. Darcy. She wanted to declare this report a 'scandalous falsehood' and insist that the marriage could never take place.",
+    "gold_chunk_snippet": "A report of a most alarming nature reached me two days ago. I was told, that not only your sister was on the point of being most advantageously married, but that you--that Miss Elizabeth Bennet would, in all likelihood, be soon afterwards united to my nephew--my own nephew, Mr. Darcy.",
+    "gold_para_ids": [
+      1533
+    ]
   }
 ]
