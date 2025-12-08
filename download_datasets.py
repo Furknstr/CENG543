@@ -78,7 +78,7 @@ def download_arxiv_pdf(arxiv_id: str, dest_dir: str) -> str | None:
 def download_gutenberg_txt(book_id: str, title: str, dest_dir: str) -> str:
     fname = f"gutenberg_{book_id}_{title.replace(' ', '_')}.txt"
     out_path = os.path.join(dest_dir, fname)
-    
+
     # Zaten varsa indirme
     if os.path.exists(out_path):
         return out_path
@@ -86,8 +86,8 @@ def download_gutenberg_txt(book_id: str, title: str, dest_dir: str) -> str:
     url = f"https://www.gutenberg.org/files/{book_id}/{book_id}-0.txt"
     resp = requests.get(url)
     resp.raise_for_status()
-    resp.encoding = 'utf-8' # Encoding'i garantiye al
-    
+    resp.encoding = 'utf-8'  # Encoding'i garantiye al
+
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(resp.text)
     return out_path
@@ -101,9 +101,9 @@ def pdf_to_text(pdf_path: str) -> str:
     doc = fitz.open(pdf_path)
     text_out = []
     for page in doc:
-        blocks = page.get_text("blocks") 
+        blocks = page.get_text("blocks")
         # Blokları yukarıdan aşağıya, soldan sağa sırala (çift sütun desteği)
-        blocks.sort(key=lambda b: (b[1], b[0])) 
+        blocks.sort(key=lambda b: (b[1], b[0]))
         for b in blocks:
             # Header/Footer temizliği için basit kontrol (sayfanın en tepesi ve en altı)
             if b[1] < 50 or b[3] > page.rect.height - 50:
@@ -127,11 +127,12 @@ def clean_text(text: str) -> str:
     text = "\n".join(lines)
     return text
 
+
 def clean_gutenberg_text(text: str) -> str:
     """Kitaplar için özel temizlik: Header/Footer atar."""
     # 1. Satır sonlarını düzelt
     text = text.replace('\r', '\n')
-    
+
     # 2. Gutenberg Header Temizliği
     # Genelde "*** START OF THE PROJECT..." ile başlar
     start_marker = "*** START OF THE PROJECT"
@@ -142,8 +143,8 @@ def clean_gutenberg_text(text: str) -> str:
         # Marker satırının bitimini bul
         newline_idx = text.find('\n')
         if newline_idx != -1:
-            text = text[newline_idx+1:]
-            
+            text = text[newline_idx + 1:]
+
     # 3. Gutenberg Footer Temizliği
     end_marker = "*** END OF THE PROJECT"
     idx_end = text.find(end_marker)
@@ -164,24 +165,136 @@ def save_clean_text(raw_text: str, out_path: str):
 
 
 # ==========================
-# PARAGRAF ÇIKARMA
+# PARAGRAF ÇIKARMA: ARXIV
 # ==========================
 
-def text_to_paragraphs(text: str, min_len: int = 50) -> list[str]:
+def text_to_paragraphs_arxiv(text: str, min_len: int = 50) -> list[str]:
+    """
+    ArXiv makaleleri için eski, basit ayırma mantığı.
+    """
     # Çift enter'a göre böl
     blocks = text.split("\n\n")
     paras = []
     for b in blocks:
         # Satır içi enterları boşluğa çevir (tek paragraf tek satır olsun)
         t = b.replace('\n', ' ').strip()
-        t = re.sub(r'\s+', ' ', t) # çift boşlukları sil
-        
+        t = re.sub(r'\s+', ' ', t)  # çift boşlukları sil
+
         if len(t) >= min_len:
             paras.append(t)
     return paras
 
 
-def write_paragraphs_jsonl(
+# ==========================
+# PARAGRAF ÇIKARMA: GUTENBERG
+# ==========================
+
+ABBREVS = ("Mr.", "Mrs.", "Dr.", "Ms.", "St.", "Col.", "Gen.", "Sr.", "Jr.")
+
+
+def _normalize_block(b: str) -> str:
+    t = b.replace("\n", " ").strip()
+    t = re.sub(r"\s+", " ", t)
+    return t
+
+
+def _should_merge(prev: str, nxt: str) -> bool:
+    """
+    Gutenberg wrap çözmek için heuristik:
+      - prev sonu . ? ! ile bitmiyorsa → muhtemelen satır sarma → merge
+      - prev sonu bilinen kısaltma (Mr., Mrs., ...) ise → merge
+      - cümle sonu olsa bile nxt küçük harfle ya da noktalama ile başlıyorsa → merge
+      - aksi halde yeni paragraf
+    """
+    if not prev or not nxt:
+        return False
+
+    prev_core = prev.rstrip()
+    # Sondaki parantez, tırnak vs. temizle
+    prev_core = re.sub(r'[\)\]\}"»’]+$', "", prev_core)
+    if not prev_core:
+        return True
+
+    # Kısaltma kontrolü (Mr., Mrs. vs.)
+    for abbr in ABBREVS:
+        if prev_core.endswith(abbr):
+            return True
+
+    last = prev_core[-1]
+
+    # Cümle sonu değilse: büyük ihtimalle satır sarma → birleştir
+    if last not in ".?!":
+        return True
+
+    # Sonraki blok
+    nxt_core = nxt.lstrip()
+    # Baştaki tırnak/parantezleri at
+    nxt_core = re.sub(r'^[\("“\'«]+', "", nxt_core)
+    if not nxt_core:
+        return True
+
+    first = nxt_core[0]
+
+    # Küçük harfle başlıyorsa → cümlenin devamı
+    if first.islower():
+        return True
+
+    # Noktalama ile başlıyorsa → devam
+    if first in ",;:)]}'»”":
+        return True
+
+    # Geri kalan durumlarda yeni paragraf
+    return False
+
+
+def text_to_paragraphs_gutenberg(text: str, min_len: int = 80) -> list[str]:
+    """
+    Gutenberg romanı için daha akıllı paragraf/chunk çıkarma.
+    - \n\n ile bloklara ayır.
+    - Satır sarma kaynaklı yanlış bölünmeleri _should_merge ile birleştir.
+    - [Illustration ...] bloklarını at.
+    """
+    raw_blocks = text.split("\n\n")
+
+    merged_blocks: list[str] = []
+    current: str | None = None
+
+    for b in raw_blocks:
+        t = _normalize_block(b)
+        if not t:
+            continue
+
+        if current is None:
+            current = t
+            continue
+
+        if _should_merge(current, t):
+            current = current + " " + t
+        else:
+            if len(current) >= min_len:
+                merged_blocks.append(current)
+            current = t
+
+    # Son buffer
+    if current is not None and len(current) >= min_len:
+        merged_blocks.append(current)
+
+    # Illustration vb. çöp paragrafları filtrele
+    filtered: list[str] = []
+    for p in merged_blocks:
+        pt = p.strip()
+        if pt.startswith("[Illustration"):
+            continue
+        filtered.append(p)
+
+    return filtered
+
+
+# ==========================
+# JSONL YAZMA (AYRI FONKSİYONLAR)
+# ==========================
+
+def write_paragraphs_jsonl_arxiv(
     cleaned_txt_path: str,
     doc_id: str,
     out_jsonl_path: str,
@@ -194,10 +307,10 @@ def write_paragraphs_jsonl(
     with open(cleaned_txt_path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    paras = text_to_paragraphs(text, min_len=min_len)
+    paras = text_to_paragraphs_arxiv(text, min_len=min_len)
 
     if not paras:
-        print(f"⚠️ UYARI: {doc_id} dosyasından hiç paragraf çıkmadı! Temizlik fonksiyonunu kontrol et.")
+        print(f"⚠️ UYARI: {doc_id} (arxiv) dosyasından hiç paragraf çıkmadı!")
 
     # append modunda yaz
     with open(out_jsonl_path, "a", encoding="utf-8") as out_f:
@@ -208,8 +321,39 @@ def write_paragraphs_jsonl(
                 "text": p
             }
             out_f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-    
-    print(f"✅ {doc_id}: {len(paras)} paragraf eklendi.")
+
+    print(f"✅ (arxiv) {doc_id}: {len(paras)} paragraf eklendi.")
+
+
+def write_paragraphs_jsonl_gutenberg(
+    cleaned_txt_path: str,
+    doc_id: str,
+    out_jsonl_path: str,
+    min_len: int = 80
+):
+    if not os.path.exists(cleaned_txt_path):
+        print(f"❌ HATA: Dosya bulunamadı -> {cleaned_txt_path}")
+        return
+
+    with open(cleaned_txt_path, "r", encoding="utf-8") as f:
+        text = f.read()
+
+    paras = text_to_paragraphs_gutenberg(text, min_len=min_len)
+
+    if not paras:
+        print(f"⚠️ UYARI: {doc_id} (gutenberg) dosyasından hiç paragraf çıkmadı!")
+
+    # append modunda yaz
+    with open(out_jsonl_path, "a", encoding="utf-8") as out_f:
+        for i, p in enumerate(paras):
+            rec = {
+                "doc_id": doc_id,
+                "para_id": i,
+                "text": p
+            }
+            out_f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+    print(f"✅ (gutenberg) {doc_id}: {len(paras)} paragraf eklendi.")
 
 
 # ==========================
@@ -218,7 +362,7 @@ def write_paragraphs_jsonl(
 
 def init_empty_qa(base_dir: str, doc_ids: list) -> str:
     qa_path = os.path.join(base_dir, "qa_pairs.json")
-    
+
     if os.path.exists(qa_path) and os.path.getsize(qa_path) > 5:
         print(f"[INFO] QA file already exists: {qa_path}")
         return qa_path
@@ -234,10 +378,10 @@ def init_empty_qa(base_dir: str, doc_ids: list) -> str:
                 "answer": "CEVAP_BURAYA",
                 "gold_chunk_snippet": "REFERANS_METIN_BURAYA"
             })
-            
+
     with open(qa_path, "w", encoding="utf-8") as f:
         json.dump(qa_skeleton, f, ensure_ascii=False, indent=2)
-    
+
     return qa_path
 
 
@@ -268,11 +412,10 @@ def run_faz1():
         docs_dir
     )
 
-    # 3) PDF → text ve temizlenmiş txt kaydet
+    # 3) PDF → text ve temizlenmiş txt kaydet (arxiv)
     for aid, pdf_path in pdf_paths.items():
         if pdf_path is None:
             continue
-        # print(f"[INFO] Processing {aid} ...")
         raw_txt = pdf_to_text(pdf_path)
         out_clean_path = os.path.join(raw_dir, f"{aid}_clean.txt")
         save_clean_text(clean_text(raw_txt), out_clean_path)
@@ -281,7 +424,7 @@ def run_faz1():
     print("[INFO] Cleaning Gutenberg book text ...")
     with open(book_txt, "r", encoding="utf-8") as f:
         book_raw = f.read()
-    
+
     book_clean_path = os.path.join(
         raw_dir,
         f"gutenberg_{GUTENBERG_BOOK['id']}_clean.txt"
@@ -299,7 +442,7 @@ def run_faz1():
     print("[INFO] Writing paragraphs for arXiv docs ...")
     for aid in ARXIV_IDS:
         clean_path = os.path.join(raw_dir, f"{aid}_clean.txt")
-        write_paragraphs_jsonl(
+        write_paragraphs_jsonl_arxiv(
             cleaned_txt_path=clean_path,
             doc_id=aid,
             out_jsonl_path=paragraphs_jsonl,
@@ -308,7 +451,7 @@ def run_faz1():
 
     print("[INFO] Writing paragraphs for Gutenberg book ...")
     # Kitabın temizlenmiş yolunu kullanarak jsonl'e ekle
-    write_paragraphs_jsonl(
+    write_paragraphs_jsonl_gutenberg(
         cleaned_txt_path=book_clean_path,
         doc_id=f"gutenberg_{GUTENBERG_BOOK['id']}",
         out_jsonl_path=paragraphs_jsonl,
