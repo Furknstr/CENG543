@@ -1,0 +1,934 @@
+Holographic Shannon Entropy:
+The Outer Entropy of Entanglement Wedges
+
+Sean J. Weinberg1, ∗
+
+1Department of Physics, University of California, Santa Barbara, CA 93106, USA
+
+We introduce a simple geometrical construction similar to covariant holographic entanglement
+entropy but with the addition of a new term proportional to boundary region volume. This new
+procedure has properties strongly resembling classical Shannon entropy of probability distributions
+rather than von Neumann entropy, so we call the quantity holographic Shannon entropy.
+The
+holographic Shannon entropy of a region A is divergent in AdS/CFT, but upon regulation, it appears
+to be equal to the outer entropy of the entanglement wedge of A with the entanglement wedge of the
+complement of A held ﬁxed. The construction is unambiguous when applied to compact surfaces
+with convex shape in general spacetimes obeying the null curvature condition (of which AdS with
+a regulator is a special case). In this context we prove that holographic Shannon entropy obeys
+monotonicity, a key property of Shannon entropy, as well as all known balanced inequalities of
+dynamical holographic entanglement entropy. In the static case, we explain why there must exist
+some classical probability distribution on random variables locally distributed on the boundary with
+the property that the Shannon entropies of all marginals are exactly reproduced by the holographic
+Shannon entropy formula.
+
+arXiv:1905.03777v1  [hep-th]  9 May 2019
+
+I.
+OVERVIEW
+
+Perhaps the most signiﬁcant recent development to
+arise from research on holographic entanglement entropy
+[1, 2] was establishing the modern form of subregion du-
+ality [3]. The possibility that a region A on the boundary
+of an asymptotically AdS spacetime is dual to a speciﬁc
+bulk subregion was originally investigated from a causal
+structure perspective [4], but it has since been discov-
+ered that the entanglement wedge of A [5], the bulk re-
+gion between A and its entangling surface, is the most
+reasonable thing to call the bulk region associated with
+A. Subregion duality is a major breakthrough. It reveals
+the role of quantum error correction in quantum gravity
+[6] and allows for some notion of spatial subsystems in
+quantum gravity, a subject where locality is notoriously
+absent [7, 8].
+Subregion duality leads to an intriguing although
+poorly formed question: how many quantum states ﬁt
+inside the entanglement wedge of a boundary region A?
+Without worrying about the precise meaning of this ques-
+tion, we can give two distinct answers. A is a subregion
+on which a CFT is deﬁned, and upon ﬁxing a UV reg-
+ulator, the region has a number of degrees of freedom
+proportional to its volume |A| so e|A|/4GN is a potential
+guess. On the other hand, a somewhat diﬀerent answer
+is suggested by the Bousso bound (also known as the
+covariant entropy bound) [9]. If A is regulated in a way
+that makes its ingoing future null expansion non-positive,
+then the extremality of the HRT surface of A allows us to
+apply the Bousso bound to the spacelike surface A∪γ(A)
+where γ(A) is the HRT surface of A. The upper bound
+on light sheet entropy is the sum of the CFT volume of
+A plus the area of γ(A). The former has a divergence
+
+∗sjasonw@physics.ucsb.edu
+
+FIG. 1.
+Holographic Shannon deﬁnition is deﬁned almost
+identically to the HRT formula for covariant holographic en-
+tanglement entropy. In the ﬁgure on the left above, the area
+of the black surface gives the usual von Neumann entropy of
+the red region A1. In the ﬁgure on the right, the area of the
+black surface, which now includes A1 as well as its entangling
+surface, produces what we call holographic Shannon entropy.
+
+that dominates over the latter, but perhaps we are los-
+ing a great deal of fascinating structure by ignoring the
+interplay between the two terms.
+In this paper, we choose to not ignore the second or the
+ﬁrst term that arises from the Bousso bound when ap-
+plied to an entanglement wedge. In doing so, we present
+a geometrical construction with signiﬁcance that overlaps
+between quantum gravity and information theory. Our
+construction is very simple: we compute the quantity
+
+H(A) =
+1
+4GN
+(|A| + |γ(A)|)
+(1)
+
+where |A| is the regulated area of a boundary region A
+and |γ(A)| is the regulated area of the the HRT surface
+of A. Figure 1 illustrates the procedure. Equation (1) is
+much cleaner when applied to convex compact surfaces in
+general spacetimes obeying the null curvature condition
+
+along the lines of proposals for extending holographic en-
+tanglement to general spacetimes [10, 11] in which case
+the ﬁrst term is not much larger than the second.
+The function H in equation (1) will be referred to as
+holographic Shannon entropy regardless of whether it is
+applied in AdS/CFT with a cutoﬀor on a convex sur-
+face in a non-AdS spacetime. The motivation for calling
+it a Shannon entropy comes from a collection of results.
+In the case where the static RT formula applies for von
+Neumann entropy, a result due to Gross and Walter [12]
+allows us to prove that there must exist a probability dis-
+tribution p on a collection of (correlated ) random vari-
+ables locally distributed along the boundary such that
+for any subregion A, the marginal probability distribu-
+tion pA has Shannon entropy given precisely by (1).
+In the dynamical case, we are not currently able to
+prove the existence of such a probability distribution,
+but we can come close. We prove that H satisﬁes mono-
+tonicity: H(AB) ≥H(A), a critical feature of Shan-
+non entropy, and we also conﬁrm that it satisﬁes every
+known balanced inequality for the dynamical holographic
+entropy cone. This immediately implies [13] that H satis-
+ﬁes a number of known inequalities required for Shannon
+entropy including the Zhang-Yeung inequality [14].
+If
+the dynamical holographic entropy cone turns out to be
+equal to the static entropy cone, a very important open
+problem[13], then we can can conclude that a probabil-
+ity distribution realizes H even in the general dynamical
+case.
+Showing that H is a Shannon entropy is an important
+step, but it raises more questions then it answers. The
+probability distribution on the boundary seems to be a
+classical analog of a density matrix in AdS/CFT, but it
+is quite unclear what the meaning of the distribution is.
+This paper does not give a unique or physically motivated
+deﬁnition of the probability distribution, we only show
+that it exists in many cases.
+Fortunately, holographic Shannon entropy itself stands
+on stronger physical grounds. In addition to our com-
+ments above about the covariant entropy bound, the best
+hint about the underlying meaning of H comes from an
+outer entropy computation based on the ideas of [15, 16].
+Computing the outer entropy of a surface means holding
+the spacetime outside of the surface ﬁxed while coarse
+graining over all possibilities for the unknown region in
+the interior of the surface. The most famous result about
+outer entropy is that the outer entropy of an apparent
+horizon is equal to its area, but there is a quickly grow-
+ing collection of other intriguing results [17–19].
+In the following section, we will make the case that the
+holographic Shannon entropy of a region A is the reg-
+ulated outer entropy of its entangling surface with the
+complement entanglement wedge held ﬁxed. Our argu-
+ment is plagued by the divergence of H(A), but the result
+still appears to be the only reasonable answer to give
+for the outer entropy of the entanglement wedge of A
+upon regulation. This is consistent with what we would
+speculate with the Bousso bound. After all, the original
+
+purpose of holographic entropy bounds is to estimate an
+upper bound for the gravitational entropy inside of a sur-
+face, a counting of the number of spacetimes that could
+be hidden behind a wall. Our results add some conﬁdence
+to this idea: the area of an entanglement wedge counts
+the number of states consistent with the ﬁxed geometry
+in the complement wedge.
+
+II.
+MOTIVATION: OUTER ENTROPY OF THE
+ENTANGLEMENT WEDGE
+
+The geometrical construction of holographic Shannon
+entropy can be motivated in two separate ways.
+The
+ﬁrst is an attempt to answer a question related to gravi-
+tational entropy which we now pose.
+Consider a classical asymptotically locally AdS space-
+time M0 in the context of AdS/CFT in the large N limit
+with conformal boundary ∂M0. Let B0 be a Cauchy sur-
+face for ∂M0. We are assuming that ∂M0 is the entire
+boundary so that there is a pure quantum state |ψ0⟩
+on a CFT on B0 which describes the spacetime.
+Di-
+vide B0 into two disjoint subregions: A1 and A2 so that
+B0 = A1 ∪A2. Consider the entanglement wedge of A1,
+denoted EW(A1, M0) or just EW(A1) if we have clearly
+speciﬁed M0. We also use the terminology outer wedge of
+A1, denoted OW(A1, M0), to refer to the entanglement
+wedge of A2 rather than A1.
+Suppose that we only have access to the outer wedge of
+A1 and that the the entanglement wedge of A1 is hidden
+from our observation. What entropy should be assigned
+to quantify this lack of information about the entire bulk?
+In other words, what is the outer entropy of the entan-
+glement wedge of A1?
+Consider a collection of density matrices on the the
+Hilbert space of B0 consistent with the outer wedge of A1
+being held ﬁxed. Recall that we had access to a speciﬁc
+pure quantum state |ψ0⟩which was associated with the
+spacetime M0. Put
+
+Ω=
+
+ρ on B0
+TrA1 (ρ) = TrA1 (|ψ0⟩⟨ψ0|)
+
+.
+
+In other words, Ωis the collection of all density matri-
+ces on B0 subject to the condition that if ρ ∈Ω, then
+upon tracing out A1 to a reduced ρA2, we always ﬁnd
+that ρA2 = ρ0
+A2 where ρ0
+A2 = |ψ0⟩⟨ψ0|. This concept is
+illustrated in ﬁgure 2.
+We now attempt to compute a quantity we denote by
+◦
+S(A1) deﬁned as
+
+◦
+S(A1) = sup
+
+S(ρ)
+ρ ∈Ω
+
+(2)
+
+where S denotes von Neumann entropy. This calculation
+should provide an estimate of the desired gravitational
+entropy of the entanglement wedge of A1. At heart it is a
+very similar calculation to that of [15, 16] because we are
+varying over density matrices consistent with a condition
+
+on the outer wedge OW(A1, M0). The notation
+◦
+S(A1)
+
+FIG. 2.
+The collection Ωis the set of density matrices on
+A1A2 = B0 with the property that TrA1ρ is the same as the
+reduced density matrix in the known entanglement wedge of
+A2. Ωprovides a way to quantify the entropy associated with
+the missing information about the wedge of A1.
+
+is somewhat unclear because it depends not only on the
+region A1 but also on the original reduced density matrix
+on A2 as well as a cutoﬀprescription on the CFT.
+
+The quantity
+◦
+S is divergent, but this is no reason to
+ignore its structure upon regulation. Fix some regular-
+ization procedure that makes it so that von Neumann en-
+tropy cannot diverge. More precisely, if A is a subregion
+of B0, we are now guaranteed that there is a (ﬁnite) posi-
+tive number S⋆(A) which is the maximum of entropies on
+A when varying over all density matrices on the Hilbert
+space. We are now guaranteed by subadditivity that if
+ρ ∈Ω,
+
+S(ρ) ≤S(ρA1) + S(ρA2) ≤S⋆(A1) + |γ(A1)|
+
+4Gℏ
+(3)
+
+where we have replaced S(ρA2) by the von Neumann en-
+tropy computed by the HRT formula for the region A2
+in the state ψ0. This is a justiﬁed manipulation because
+ρ ∈Ω. Note that the area of the HRT surface γ(A1) is
+cut oﬀby the regularization, but it is still computed in
+the original bulk spacetime M0 associated with the pure
+state ψ0.
+The upper bound (3) can be saturated because we
+can take a density matrix ρ⋆
+A1 with the maximal entropy
+S⋆(A1) on A1 and put
+
+ρ = ρ⋆
+A1 ⊗TrA1 (|ψ0⟩⟨ψ0|)
+
+which is obviously in Ωand obviously saturates (3). We
+thus have
+
+◦
+S(A1) = S⋆(A1) + |γ(A1)|
+
+4GN
+(4)
+
+which is precisely our formula for holographic Shannon
+entropy if we interpret S⋆(A1) as the cutoﬀarea (or CFT
+volume) of A1.
+
+Geometrical outer entropy
+
+This section can be skipped without a major loss of
+continuity for readers more interested in the properties
+of holographic Shannon entropy rather than its “deriva-
+tion.”
+There another very similar way to arrive at the holo-
+graphic Shannon entropy formula which may appeal more
+to a relativist because it is a purely geometrical con-
+struction that does not rely on statements about den-
+sity operators. This second approach is directly based
+on the concept of outer entropy. However, we will need
+to generalize the deﬁnition of outer entropy in a way that
+may cause some discomfort and to be as clear as possible
+about the strengths and weaknesses of this approach, we
+use the term geometrical outer entropy below to distin-
+guish from the original deﬁnition of outer entropy given
+in [15].
+The situation is similar to the above: M0 is a ﬁxed
+asymptotically locally AdS spacetime with D dimensions
+that satisﬁes the null curvature condition. The conformal
+boundary ∂M0 may consist of multiple connected com-
+ponents. B0 is a (D −2 dimensional) Cauchy surface of
+∂M0. Note that the number of connected components
+of B0 is the same as the number of components of ∂M0.
+Let Σ be a spacelike AdS-Cauchy surface for M0 with
+B0 ⊂Σ. Let σ be a D −2 dimensional (spacelike) sub-
+manifold of Σ. σ will then be homologous to some sub-
+region of B0 which may or may not be all of B0. In any
+case, we ﬁnd A1, A2 ⊂B0 with σ anchored to A1 ∩A2,
+A1 ∪A2 = B0, and such that the regions only intersect
+at their mutual boundaries. This is the standard setup
+for computing holographic entanglement entropy of A1
+in the case where σ is extremal, but we are not making
+that assumption yet. σ need not have anything to do
+with an entanglement wedge.
+Let K denote the subset of Σ that lies between σ and
+A2. The domain of dependence of K is a dimension D
+region which is called the outer wedge of σ on the A2
+side. We will denote it simply by W(σ, A2). We will not
+call this the outer wedge of A1 in the spacetime M0 be-
+cause σ is not an HRT surface. Our insistence to include
+A2 as an argument to W is because σ is not necessarily
+homologous to the boundary.
+We now consider the collection of all spacetimes that
+are identical to M0 in W(σ, A2) but otherwise uncon-
+strained. Suppose that
+¯
+M is an asymptotically locally
+AdS spacetime obeying the null curvature and generic
+condition with the property that the conformal bound-
+ary of ¯
+M has copies ¯
+A1 and ¯
+A2 of A1 and A2 respectively.
+We will say that ¯
+M is equivalent to M0 on the A2 side of
+σ if there exists a dimension D subregion W of ¯
+M with
+D∩∂¯
+M = ¯
+A2 such that W is isometric to the outer wedge
+
+FIG. 3.
+Holographic Shannon deﬁnition is deﬁned almost
+identically to the HRT formula for covariant holographic en-
+tanglement entropy. In the ﬁgure on the left above, the area
+of the black surface gives the usual von Neumann entropy of
+the red region A1. In the ﬁgure on the right, the area of the
+black surface, which now includes A1 as well as its entangling
+surface, produces what we call holographic Shannon entropy.
+
+W(σ, A2). The collection of all spacetimes equivalent to
+M0 on the A2 side of σ is denoted by C(M0, σ, A2).
+The subtleties of our deﬁnition of equivalence are well-
+illustrated by an example shown in ﬁgure 3. An AdS-
+Schwarzschild black hole with two asymptotic regions A1
+and A2 is shown in the upper ﬁgure. The surface σ is
+the entangling surface of A1 in this example, but that is
+unnecessary. The lower half of the ﬁgure is the disjoint
+union of two spacetimes.
+(We use the tensor product
+symbol as a reminder of how such a spacetime is treated
+in AdS/CFT). The lower pair is equivalent to the origi-
+nal black hole on the A2 side of σ. Notice how the new
+spacetime still has copies of the original regions A1 and
+A2, but that it also has additional new asymptotic re-
+gions. Also note that one of the black holes in the new
+spacetime has a diﬀerent structure.
+There is a critical observation to be made about
+this deﬁnition of equivalence.
+Suppose that
+¯
+M
+∈
+C(M0, σ, A2). Then there must be a surface ¯σ in ¯
+M which
+is to homologous to ¯A2 and which has the same (regu-
+lated) area as σ. However, there is no guarantee that ¯σ is
+also homologous to ¯A1. This is because the spacetime ¯
+M
+may have a conformal boundary with additional regions
+beyond ¯A1 and ¯A2.
+The size of C(M0, σ, A2) is a seemingly good start-
+ing place when assessing the entropy associated with not
+knowing the gravitational information on the A1 side of
+σ. However, this set is far too large as it includes arbi-
+trary and completely pointless extensions of the space-
+time with additional disconnected components.
+To solve this problem, we follow [15, 16] and take
+¯
+M ∈C(M0, σ, A2) without restriction, but we compute
+the HRT entropy only of ¯A1 ∪¯A2 which, as mentioned
+above, is not necessarily the entire boundary. This en-
+tropy is bounded upon regularization to some maximal
+value S⋆(A1) + S⋆(A2) which is proportional to the reg-
+ulated CFT volume of A1 and A2.1
+
+1 There is no need to use bars on arguments to S⋆since Ai and
+
+This estimate of the entropy associated with coarse-
+graining over the region on the A1 side of σ in the space-
+time M0 is what we refer to as geometrical outer entropy
+and is denoted as
+
+◦
+S(σ, A2) = sup
+|γ( ¯B(M))|
+
+M ∈C(M0, σ, A2)
+
+. (5)
+
+4GN
+
+In this expression, ¯B(M) means the region ¯A1 ∪¯A2 asso-
+ciated with the spacetime M and γ(A) is the HRT surface
+of A. Note that it would be better to put M0 as an ar-
+
+gument for
+◦
+S but we avoid this since it will be clear from
+context what initial spacetime we are working with.
+This formula for geometrical outer entropy is based on
+the same ideas as in section II and in [15]. We are essen-
+tially imagining that our original spacetime corresponds
+
+to a pure quantum state ψ0 on A1∪A2 and that
+◦
+S is com-
+puting, by way of the HRT formula, the von Neumann
+entropy of the density matrix
+
+ρ = 1
+
+X
+
+ψ∈C(ψ0,σ,A2)
+|ψ⟩⟨ψ|
+
+n
+
+where n is a normalizing constant and C(ψ0, σ, A2) is the
+collection of pure quantum states on A1 ∪A2 subject to
+the condition that the spacetime is ﬁxed on the A2 side
+of σ.
+We now consider the case where σ = γ(A1) so that
+the outer wedge W(σ, A2) is in fact the entanglement
+wedge EW(A2). In this case we will refer to W(σ, A2) as
+the outer wedge of A1 and denote it by OW(A1). The
+
+argument is now similar to that in section II.
+◦
+S(σ, A2)
+is bounded above by S⋆(A1) + |γ(A1)|
+
+4GN
+because it is the
+supremum of the set
+|γ( ¯B(M))|
+
+M ∈C(M0, σ, A2)
+
+,
+
+4GN
+
+any element of which is an HRT entropy of ¯A1 ∪¯A2.
+The HRT formula satisﬁes subadditivity and the entropy
+of ¯A2 is guaranteed to be |γ(A1)|
+
+4GN
+by the deﬁnition of C
+while the entropy of ¯A1 is bounded by S⋆(A1) upon reg-
+ularization.
+To see the the upper bound is saturated, we can let
+¯
+M be the disjoint union of two bulks M1 and M2. M1
+is an isometric copy of M0, but the regions correspond-
+ing to A1 and A2 will be denoted by ¯C1 and ¯A2, re-
+spectively. (This labeling is extremely important.). The
+second spacetime M2 has a boundary ∂M2 which also
+consists of copies of A1 and A2 but we label them by ¯A1
+and ¯C2, respectively. The spacetime M2 is not the same
+as M0. Instead, we take it to be a black hole with the
+largest possible temperature, after regulation, so that en-
+tropies of subregions go like regulated CFT volume. In
+
+¯
+Ai have the same volume (after regularization).
+
+this spacetime, γ( ¯A1 ∪¯A2) is a disjoint union of a copy
+of (a copy of) the original HRT surface γ(A1) and a sur-
+face pressed up against A1 at the boundary. The outer
+entropy with OW(A1) = EW(A2) held ﬁxed is thus the
+sum of two terms: the holographic entanglement entropy
+of A1 in the original spacetime, and a much larger term
+proportional to the regulated volume of A1.
+
+III.
+MOTIVATION AND EXISTENCE:
+STABILIZER STATES
+
+There is a very diﬀerent motivation for the holographic
+Shannon entropy formula which comes a property of sta-
+bilizer quantum states. An elegant discussion of stabilizer
+states can be found in [20], but a detailed knowledge of
+the subject is not a prerequisite for this section.
+Let d ≥2 be an integer and let H =
+ 
+Cd⊗n be the
+Hilbert space of n qu-d-its.
+Gross and Walter proved
+that if ρ is a stabilizer state on H, then there exists a
+classical joint probability distribution p with the follow-
+ing entropic property. Suppose that I is any subset of
+{1, 2, . . . , n} and that ρI and pI denote, respectively, the
+reduced density matrix and marginal probability distri-
+bution on the copies of
+ 
+Cd
+and Xi indexed by i ∈I.
+Then, the von Neumann entropy S(ρI) and Shannon en-
+tropy H(pI) are related by
+
+S(ρI) = H(pI) −|I| log d.
+(6)
+
+The factor of log d arises because we insist on using nat-
+ural logarithms rather than base d to avoid confusion
+involving holographic entanglement.
+The result (6) establishes a remarkable relationship
+between classical and quantum information in certain
+cases. The most direct consequence of the relationship
+is that every balanced classical information inequality2
+
+holds for von Neumann entropies of stabilizer quantum
+states [12, 20].
+This fact follows directly from (6) be-
+cause the term proportional to |I| cancels on both sides
+of a balanced inequality.3
+
+2 When we refer to classical information inequalities, we mean in-
+equalities linear in Shannon entropies of probability distributions
+that are valid for all distributions. In other words, let I be the
+power set of {1, . . . , n} with the empty set removed and ﬁx a
+function c : I →R. Suppose that for any probability distribu-
+tion p on n random variables, P
+I∈I c(I)H(pI) ≥0 where pI is
+the marginal of p on the subset of variables indexed by I. Then,
+we say that c furnishes a classical information inequality. Strong
+subadditivity is an example, but there are many more [14]. In-
+formation inequalities like H(A) + H(B) ≥H(AB) are balanced
+which means that for any j ∈{1, . . . , n}, P
+
+I∈{I′i∈I′} c(I) = 0.
+
+Inequalities like H(AB) ≥H(A) are not balanced because B
+appears only on the left hand side.
+3
+There is an unsettled conjecture due to Cadney, Linden, and
+Winter (CLW) that this result is not a special property of sta-
+bilizer states but rather that every quantum state satisﬁes every
+
+Equation (6) already looks like the holographic Shan-
+non entropy formula because upon regularization, the
+volume of a boundary region is proportional to the
+number of constituent subsystems.
+In fact, we can
+now make a powerful assertion. Consider a static bulk
+where the Ryu-Takayanagi formula applies. We can di-
+vide the boundary into a large number of subregions
+R1, R2, . . . Rn and assign to each a single qubit upon reg-
+ularization. The Ryu-Takayanagi formula allows us to
+compute the von Neumann entropy of ∪i∈IRi for any
+subset of indices I. These entropies can be reproduced
+to arbitrary precision by stabilizer states on n parties
+by an argument involving random tensor networks [23].
+Thus, there is a joint probability distribution p on n ran-
+dom variables, one associated to each of the regions Ri,
+such that the Shannon entropy H(pI) of the marginal
+associated with the region ∪i∈IRi is given by the area
+of its RT surface plus |I| log 2. By making the standard
+holographic identiﬁcation
+
+log 2 = |Ri|
+
+4GN
+for every qubit-containing subregion Ri, we obtain equa-
+tion (1).
+So, up to the cumbersome issue of regularization, we
+can conclude that in static cases there is some probabil-
+ity distribution jointly deﬁned on local random variables
+on the boundary with Shannon entropies given by equa-
+tion (1) for all marginals, no matter their topology. In
+dynamical cases where entangling surfaces are computed
+with the HRT formula or by the approach of [11], we
+are not yet in a position to prove that a probability dis-
+tribution realizing equation (1) exists. However, such a
+distribution exists if the dynamical holographic entropy
+cone for N parties lies within the N party stabilizer cone
+[20] as this would allow us to apply the result of [12] for
+the dynamical case just like the static case.
+In fact, it may turn out that the dynamical case isn’t
+nearly as threatening as it appears. There is currently a
+great deal of interest in the open problem asking whether
+or not the dynamical and static holographic entropy
+cones for N parties are in fact, the same thing!
+The
+monogamy of mutual information inequality [24] guar-
+antees that this is the case for N ≤4 regions.
+Un-
+fortunately, the 5 party static entropy cone is deﬁned
+by a collection of known inequalities [25, 26] of which
+several cannot be proven with standard methods [13].
+These inequalities have already undergone some dynam-
+ical testing [27] with no violation thus far. Recent in-
+vestigations [28–31] have found structure to holographic
+
+balanced classical entropy inequality [21]. This is what happened
+with strong subadditivity [22], but given how much harder the
+proof of quantum strong subadditivity is than that of classical
+strong subadditivity, it could be extremely diﬃcult to provide a
+similar proof for even the quantum version of the Zhang-Yeung
+inequality [14]. There are holographic consequences if the CLW
+conjecture is correct [13].
+
+entropies that holds in both the static and dynamical
+case.
+
+IV.
+PROPERTIES OF HOLOGRAPHIC
+SHANNON ENTROPY
+
+The conclusions above strongly suggest that we take
+equation (1) seriously. Even if the outer entropy argu-
+ment has an element of hand-waving to it and even if the
+stabilizer state argument is taken only as an existence
+proof, there is still an accumulation of evidence that for
+some reason or another, (1) is an important ﬁnding. With
+this in mind, we now clean up the geometrical area for-
+mula, providing a more formal deﬁnition, and we quickly
+prove some of its properties that suggest a Shannon en-
+tropy interpretation.
+Fix a globally hyperbolic spacetime M (or at lease a
+spacetime with a globally hyperbolic conformal compact-
+iﬁcation) obeying the null energy and generic conditions.
+Do not assume that M is asymptotically locally AdS. Let
+σ be a connected compact spacelike codimension 2 sur-
+face in M with future-directed null orthogonal vector
+ﬁelds k and l.
+θk and θl, satisfy θk ≥0 and θl ≤0.
+Take a Cauchy surface Σ0 that contains σ and consider
+the domain of dependence of the part of Σ0 which is in-
+side of σ. By “inside” we mean in the direction of l −k
+from σ. Denote this domain of dependence by Dσ.
+Let A be a subregion of σ and let γ(A) denote the
+smallest extremal surface homologous to A that lies in-
+side of Dσ. The area of γ(A) will still be called holo-
+graphic entanglement entropy even though it is not an-
+chored to an AdS boundary.
+Like conventional holo-
+graphic entanglement entropy [24, 32, 33], the construc-
+tion here satisﬁes monogamy of mutual information and
+strong subadditivity [11].
+The holographic Shannon entropy of A ⊂σ is the quan-
+tity
+
+H(A) =
+1
+4GN
+(|A| + |γ(A)|)
+
+where |A| is the area of A and γ(A) is the entangling
+surface of A as deﬁned in the previous paragraph. Note
+that in this context, the neither term is divergent, al-
+though the ﬁrst term is always greater than or equal to
+the second [11].
+The most important geometrical results we currently
+know about this construction are the following pair of
+theorems:
+
+Theorem 1. Let A and B be subregions of σ which
+are disjoint except, perhaps, at their boundaries. Then,
+H(AB) ≥H(A).
+
+Proof. Recall that the entangling surfaces of regions on
+σ lie in the domain of dependence Dσ. Wall’s entangle-
+ment wedge nesting theorem [33] was generalized in [11]
+to show that we can ﬁnd a topologically closed spacelike
+surface Σ anchored to σ such that
+
+1. The domain of dependence of Σ is Dσ
+
+2. γ(A) ⊂Σ and γ(AB) ⊂Σ
+
+3. γ(A) and γ(AB) are minimal area surfaces on Σ
+anchored to ∂A and ∂(AB) respectively.
+
+Notice that γ(AB) ∪B is a non-minimal surface on
+Σ anchored and homologous to A.
+Thus, |γ(A)| ≤
+|γ(AB)| + |B| so
+
+|A| + |γ(A)| ≤|A| + |B| + |γ(AB)|.
+
+Theorem 2. Every balanced inequality that applies to
+covariant holographic entanglement on compact a com-
+pact surface applies holographic Shannon entropy.
+
+Proof. This is obvious because in balanced inequalities,
+the term proportional to volume of a region cancels on
+both sides of the inequality.
+
+The ﬁrst of these theorems relates to the most fa-
+mous distinction between classical and quantum correla-
+tion. Consider two random variables A and B and their
+joint probability distribution p. The entropy of A is the
+expectation value of −log p(A) so it measures the ex-
+pected “surprisal” of A. If we always measure B before
+measuring A, we should expect to be less surprised by
+A, so the conditional entropy H(A|B), deﬁned as the
+expectation value of −log p(A|B), must be no greater
+than H(A). Because p(a, b) = p(a|b)p(b), it follows that
+H(AB) = H(A|B) + H(B), and from this we see that
+H(A|B) ≤H(A) is the statement of subadditivity, a
+property that classical and quantum correlations hold in
+common. However, quantum mechanically we can have
+S(AB) = 0 while S(A) > 0 so that S(A|B) < 0 while
+classically H(A|B) is the expectation value of a positive
+random variable.
+Shannon
+entropy
+thus
+satisﬁes
+monotonicity:
+H(AB)
+≥
+H(A) while von Neumann entropy does
+not. The holographic Shannon entropy formula and the
+HRT formula share this critical distinction.
+On the other hand, the second theorem shows that
+there is a large family of information inequalities that
+the two constructions have in common.
+In particular,
+we immediately conclude that H satisﬁes monogamy of
+mutual information and strong subadditivity, the ﬁrst of
+which is not satisﬁed by all probability distributions. The
+second theorem also allows us to conclude, becuase of the
+ﬁndings of [13], that H satisﬁes a large class of known
+classical inequalities. These include those of [14, 34, 35].
+However, the balanced inequalities found in [36] are not
+yet proven for the dynamical holographic entropy cone
+[13] and are thus not proven for holographic Shannon
+entropy.
+
+V.
+REMAINING QUESTIONS
+
+The simple construction given here is promising and
+problematic. In the static case with a compact or reg-
+ulated AdS boundary, there is no doubt that the holo-
+graphic Shannon entropy formula is really computing all
+of the Shannon entropies of the marginals of some prob-
+ability distribution. In the general dynamical case, there
+are already enough known inequalities satisﬁed by H, es-
+pecially monotonicity, to have some conﬁdence that there
+is no need to restrict to static spacetimes. But what prob-
+ability distribution are we talking about? The stabilizer
+state methodology can be taken as an existence proof,
+but it leaves much to be desired. Is there some classi-
+cal probability distribution deﬁned on local subsystems
+of the boundary that arises for a physical or natural rea-
+son? Does this hypothetical distribution directly relate
+to the concepts of outer entropy of entangling surfaces?
+Is there a classical form of holography that could have
+an impact on classical information theory? Some steps
+in this direction appear to have been considered in [37].
+
+[1] S. Ryu and T. Takayanagi, “Holographic derivation of
+entanglement entropy from AdS/CFT,” Phys. Rev. Lett.,
+vol. 96, p. 181602, 2006.
+[2] V. E. Hubeny, M. Rangamani, and T. Takayanagi, “A
+Covariant holographic entanglement entropy proposal,”
+JHEP, vol. 07, p. 062, 2007.
+[3] X. Dong, D. Harlow, and A. C. Wall, “Reconstruction
+of Bulk Operators within the Entanglement Wedge in
+Gauge-Gravity Duality,” Phys. Rev. Lett., vol. 117, no. 2,
+p. 021601, 2016.
+[4] R. Bousso, B. Freivogel, S. Leichenauer, V. Rosenhaus,
+and C. Zukowski, “Null Geodesics, Local CFT Opera-
+tors and AdS/CFT for Subregions,” Phys. Rev., vol. D88,
+p. 064057, 2013.
+[5] M. Headrick, V. E. Hubeny, A. Lawrence, and M. Ranga-
+mani, “Causality & holographic entanglement entropy,”
+JHEP, vol. 12, p. 162, 2014.
+[6] A. Almheiri, X. Dong, and D. Harlow, “Bulk Locality
+and Quantum Error Correction in AdS/CFT,” JHEP,
+vol. 04, p. 163, 2015.
+[7] W. Donnelly and S. B. Giddings, “Diﬀeomorphism-
+invariant observables and their nonlocal algebra,” Phys.
+Rev., vol. D93, no. 2, p. 024030, 2016. [Erratum: Phys.
+Rev.D94,no.2,029903(2016)].
+[8] W. Donnelly and S. B. Giddings, “Observables, gravita-
+tional dressing, and obstructions to locality and subsys-
+tems,” Phys. Rev., vol. D94, no. 10, p. 104038, 2016.
+[9] R. Bousso, “A Covariant entropy conjecture,” JHEP,
+vol. 07, p. 004, 1999.
+[10] M. Miyaji and T. Takayanagi, “Surface/State Correspon-
+dence as a Generalized Holography,” PTEP, vol. 2015,
+no. 7, p. 073B03, 2015.
+[11] F. Sanches and S. J. Weinberg, “Holographic entangle-
+ment entropy conjecture for general spacetimes,” Phys.
+Rev., vol. D94, no. 8, p. 084034, 2016.
+
+The most important question about this mysterious
+probability distribution is its relationship to outer en-
+tropy. Counting gravitational states is an old and chal-
+lenging problem in quantum gravity and it has been
+largely hindered by the diﬃculty of deﬁning local subsys-
+tems in general relativity. However, entanglement wedge
+reconstruction oﬀers one way that spatial regions can be
+separated from one another, and it is obviously impor-
+tant to ask how many diﬀerent spacetimes or states ﬁt
+into an entanglement wedge. The answer is apparently
+the obvious holographic one: the area of boundary of the
+wedge including both the bulk and boundary sides of the
+wedge. The Bousso entropy bound is saturated [38].
+
+ACKNOWLEDGMENTS
+
+I would like to thank Donald Marolf, Massimiliano
+Rota, Fabio Sanches, and Aron Wall for important dis-
+cussions.
+This work was supported by the generosity
+of the Len DeBenedictis Fellowowship and by additional
+support from the University of California.
+
+[12] D. Gross and M. Walter, “Stabilizer information inequal-
+ities from phase space distributions,” Journal of Mathe-
+matical Physics, vol. 54, no. 8, p. 082201, 2013.
+[13] M. Rota and S. J. Weinberg, “New constraints for holo-
+graphic entropy from maximin: A no-go theorem,” Phys.
+Rev., vol. D97, no. 8, p. 086013, 2018.
+[14] Zhen Zhang and R. W. Yeung, “On characterization
+of entropy function via information inequalities,” IEEE
+Transactions on Information Theory, vol. 44, pp. 1440–
+1452, July 1998.
+[15] N. Engelhardt and A. C. Wall, “Decoding the Apparent
+Horizon: Coarse-Grained Holographic Entropy,” Phys.
+Rev. Lett., vol. 121, no. 21, p. 211301, 2018.
+[16] N. Engelhardt and A. C. Wall, “Coarse Graining Holo-
+graphic Black Holes,” 2018.
+[17] R. Bousso, Y. Nomura, and G. N. Remmen, “Outer
+Entropy and Quasilocal Energy,” Phys. Rev., vol. D99,
+no. 4, p. 046002, 2019.
+[18] Y. Nomura and G. N. Remmen, “Area Law Uniﬁcation
+and the Holographic Event Horizon,” JHEP, vol. 08,
+p. 063, 2018.
+[19] N. Engelhardt and G. T. Horowitz, “A Holographic Ar-
+gument for the Penrose Inequality in AdS,” 2019.
+[20] N. Linden, F. Mat, M. B. Ruskai, and A. Winter, “The
+Quantum Entropy Cone of Stabiliser States,” LIPIcs,
+vol. 22, pp. 270–284, 2013.
+[21] J. Cadney, N. Linden, and A. Winter, “Inﬁnitely many
+constrained inequalities for the von neumann entropy,”
+IEEE Transactions on Information Theory, vol. 58,
+pp. 3657–3663, June 2012.
+[22] E. H. Lieb and M. B. Ruskai, “Proof of the strong sub-
+additivity of quantummechanical entropy,” Journal of
+Mathematical Physics, vol. 14, no. 12, pp. 1938–1941,
+1973.
+
+[23] P. Hayden, S. Nezami, X.-L. Qi, N. Thomas, M. Walter,
+and Z. Yang, “Holographic duality from random tensor
+networks,” Journal of High Energy Physics, vol. 2016,
+p. 9, Nov 2016.
+[24] P. Hayden,
+M. Headrick,
+and A. Maloney,
+“Holo-
+graphic Mutual Information is Monogamous,” Phys.
+Rev., vol. D87, no. 4, p. 046003, 2013.
+[25] N. Bao, S. Nezami, H. Ooguri, B. Stoica, J. Sully, and
+M. Walter, “The Holographic Entropy Cone,” JHEP,
+vol. 09, p. 130, 2015.
+[26] S. Hernndez Cuenca, “The Holographic Entropy Cone for
+Five Regions,” 2019.
+[27] R. J. Caginalp, “The Holographic Entropy Cone in AdS-
+Vaidya Spacetimes,” 2019.
+[28] V. E. Hubeny, “Bulk locality and cooperative ﬂows,”
+JHEP, vol. 12, p. 068, 2018.
+[29] S. X. Cui, P. Hayden, T. He, M. Headrick, B. Stoica, and
+M. Walter, “Bit Threads and Holographic Monogamy,”
+2018.
+[30] V. E. Hubeny, M. Rangamani, and M. Rota, “Holo-
+graphic entropy relations,”
+Fortsch. Phys.,
+vol. 66,
+no. 11-12, p. 1800067, 2018.
+[31] V. E. Hubeny, M. Rangamani, and M. Rota, “The holo-
+graphic entropy arrangement,” Fortsch. Phys., vol. 67,
+
+no. 4, p. 1900011, 2019.
+[32] M. Headrick and T. Takayanagi, “A Holographic proof of
+the strong subadditivity of entanglement entropy,” Phys.
+Rev., vol. D76, p. 106013, 2007.
+[33] A. C. Wall, “Maximin Surfaces, and the Strong Subad-
+ditivity of the Covariant Holographic Entanglement En-
+tropy,” Class. Quant. Grav., vol. 31, no. 22, p. 225007,
+2014.
+[34] K. Makarychev, Y. Makarychev, A. E. Romashchenko,
+and N. K. Vereshchagin, “A new class of non-shannon-
+type inequalities for entropies,” 2002.
+[35] F. Matus, “Inﬁnitely many information inequalities,”
+in 2007 IEEE International Symposium on Information
+Theory, pp. 41–44, June 2007.
+[36] Zhen Zhang and Jun Yang, “On a new non-shannon-
+type information inequality,” in Proceedings IEEE Inter-
+national Symposium on Information Theory,, pp. 235–,
+June 2002.
+[37] E. M. Brehm and B. Richter, “Classical holographic
+codes,” Phys. Rev. D, vol. 96, p. 066005, Sep 2017.
+[38] Y. Nomura and S. J. Weinberg, “Entropy of a vacuum:
+What does the covariant entropy count?,” Phys. Rev.,
+vol. D90, no. 10, p. 104003, 2014.

@@ -1,0 +1,11 @@
+qid,question,doc_id,gold_para_ids,retrieved_top3,hit@1,hit@3,hit@10
+1706.03762_q1,Which mechanism that prevents parallelization during training did the Transformer architecture dispense with?,1706.03762,[8],"[('1910.01108', 8), ('1706.03762', 9), ('1706.03762', 32)]",False,False,True
+1706.03762_q2,What was added to the system to enable the model to make use of the order of tokens in the sequence?,1706.03762,[41],"[('1706.03762', 41), ('1810.04805', 173), ('1910.01108', 63)]",True,True,True
+1706.03762_q3,How many identical layers does the Encoder stack consist of?,1706.03762,"[15, 16]","[('1706.03762', 16), ('1706.03762', 15), ('1706.03762', 63)]",True,True,True
+1706.03762_q4,Which function mathematically describes the attention mechanism?,1706.03762,[17],"[('1706.03762', 17), ('1706.03762', 7), ('1706.03762', 22)]",True,True,True
+1706.03762_q5,What BLEU score did the big Transformer model establish as the new state-of-the-art on the English-to-German task?,1706.03762,[65],"[('1706.03762', 59), ('1706.03762', 65), ('1706.03762', 69)]",False,True,True
+gutenberg_1342_q1,"According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",gutenberg_1342,[7],"[('gutenberg_1342', 7), ('gutenberg_1342', 132), ('gutenberg_1342', 12)]",True,True,True
+gutenberg_1342_q2,Which of his daughters does Mr. Bennet appreciate the most due to her quickness?,gutenberg_1342,[12],"[('gutenberg_1342', 135), ('gutenberg_1342', 836), ('gutenberg_1342', 745)]",False,False,False
+gutenberg_1342_q3,Why did Darcy refuse to dance with Elizabeth at the ball?,gutenberg_1342,[26],"[('gutenberg_1342', 103), ('gutenberg_1342', 24), ('gutenberg_1342', 48)]",False,False,False
+gutenberg_1342_q4,Why did Charlotte Lucas accept the proposal to marry Mr. Collins?,gutenberg_1342,[250],"[('gutenberg_1342', 257), ('gutenberg_1342', 256), ('gutenberg_1342', 255)]",False,False,True
+gutenberg_1342_q5,What was the specific reason Lady Catherine de Bourgh gave for travelling to Longbourn to visit Elizabeth Bennet?,gutenberg_1342,[776],"[('gutenberg_1342', 773), ('gutenberg_1342', 324), ('gutenberg_1342', 775)]",False,False,False

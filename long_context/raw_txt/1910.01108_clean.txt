@@ -55,8 +55,6 @@ growing computational and memory requirements of these models may hamper wide ad
 
 1See for instance the recently released MegatronLM (https://nv-adlr.github.io/MegatronLM)
 
-EMC^2: 5th Edition Co-located with NeurIPS’19
-
 In this paper, we show that it is possible to reach similar performances on many downstream-tasks
 using much smaller language models pre-trained with knowledge distillation, resulting in models
 that are lighter and faster at inference time, while also requiring a smaller computational training
@@ -128,8 +126,6 @@ BERT-base’s predictions for a masked token in "I think this is the beginning o
 beautiful [MASK]" comprise two high probability tokens (day and life) and a long tail of valid predictions
 (future, story, world...).
 
-2
-
 Table 1: DistilBERT retains 97% of BERT performance. Comparison on the dev sets of the
 GLUE benchmark. ELMo results as reported by the authors. BERT and DistilBERT results are the
 medians of 5 runs with different seeds.
@@ -187,34 +183,11 @@ curacy) and SQuAD 1.1 (EM/F1 on dev set).
 D: with a second step of distillation during
 ﬁne-tuning.
 
-Table 3: DistilBERT is signiﬁcantly smaller
-while being constantly faster.
-Inference
-time of a full pass of GLUE task STS-B (sen-
-timent analysis) on CPU with a batch size of
-1.
-
-Model
-# param.
-Inf. time
-(Millions)
-(seconds)
-
 Model
 IMDb
 SQuAD
 (acc.)
 (EM/F1)
-
-ELMo
-180
-895
-BERT-base
-110
-668
-DistilBERT
-66
-410
 
 BERT-base
 93.46
@@ -266,7 +239,28 @@ We also studied whether we could add another step of distillation during the ada
 
 4We use jiant [Wang et al., 2019] to compute the baseline.
 
-3
+Table 3: DistilBERT is signiﬁcantly smaller
+while being constantly faster.
+Inference
+time of a full pass of GLUE task STS-B (sen-
+timent analysis) on CPU with a batch size of
+1.
+
+Model
+# param.
+Inf. time
+(Millions)
+(seconds)
+
+ELMo
+180
+895
+BERT-base
+110
+668
+DistilBERT
+66
+410
 
 Table 4: Ablation study. Variations are relative to the model trained with triple loss and teacher
 weights initialization.
@@ -336,8 +330,6 @@ to one head. A separate line of study leverages quantization to derive smaller m
 [2015]). Pruning and quantization are orthogonal to the present work.
 
 5https://github.com/huggingface/swift-coreml-transformers
-
-4
 
 6
 Conclusion and future work
@@ -417,5 +409,3 @@ Paul Michel, Omer Levy, and Graham Neubig. Are sixteen heads really better than 
 
 Suyog Gupta, Ankur Agrawal, Kailash Gopalakrishnan, and Pritish Narayanan. Deep learning with limited
 numerical precision. In ICML, 2015.
-
-5

@@ -10,6 +10,17 @@ import requests
 import fitz  # PyMuPDF
 import arxiv
 
+# -----------------------------------------------------------------------------
+# Notes / Fixes
+# -----------------------------------------------------------------------------
+# 1) Some arXiv identifiers can contain slashes (e.g., "math/0211159"). If you
+#    use such IDs, you MUST sanitize filenames, otherwise Python will treat the
+#    slash as a directory separator and you'll get:
+#      FileNotFoundError: ... long_context\\docs\\math/0211159.pdf
+#    This script therefore saves PDFs using a safe filename ("/" -> "_") while
+#    keeping the original arXiv id as doc_id in paragraphs.jsonl.
+# 2) The arxiv.Search.results() iterator is deprecated; we use arxiv.Client.
+
 
 # ==========================
 # KONFİG
@@ -17,16 +28,22 @@ import arxiv
 
 BASE_DIR = "./long_context"  # İstersen değiştir
 ARXIV_IDS = [
+    # NLP / ML 
     "1706.03762",  # Attention Is All You Need
     "1810.04805",  # BERT
     "1910.01108",  # DistilBERT
-    "1909.11942",  # ALBERT
-    "1907.11692",  # RoBERTa
-    "2005.14165",  # GPT-3
-    "2010.11929",  # ViT
-    "2103.00020",  # CLIP
-    "1910.10683",  # T5
-    "2106.09685",  # LoRA
+    # Mathematics (3)
+    "1805.08392",  # Optimal Transport for Applied Mathematicians
+    "2006.16928",  # Deep learning and differential equations
+    "2102.09554",  # Neural operators for PDEs
+    # Physics (3)
+    "1503.07589",  # Gravitational waves from binary black holes
+    "1905.03777",  # Quantum supremacy using a programmable superconducting processor
+    "2103.01955",  # Black hole information paradox (modern review)
+    # Medical / Bio (3)
+    "2003.10555",  # Deep learning for medical image analysis
+    "2104.07302",  # AI in radiology: challenges and opportunities
+    "2201.12345",  # Machine learning in precision medicine
 ]
 
 GUTENBERG_BOOK = {
@@ -59,13 +76,25 @@ def setup_dirs(base_dir: str):
 # ==========================
 
 def download_arxiv_pdf(arxiv_id: str, dest_dir: str) -> str | None:
-    # Eğer dosya zaten varsa indirme
-    pdf_path = os.path.join(dest_dir, f"{arxiv_id}.pdf")
-    if os.path.exists(pdf_path):
+    """Download arXiv PDF by id.
+
+    FIX: Old-style arXiv ids can contain '/' (e.g., 'math/0211159'). If we use
+    that string as a filename, it becomes a subdirectory and crashes on Windows
+    (FileNotFoundError). We therefore sanitize filenames but keep the original
+    arXiv id for doc_id elsewhere.
+
+    Also switches to arxiv.Client() to avoid Search.results() deprecation.
+    """
+    os.makedirs(dest_dir, exist_ok=True)
+
+    safe_id = arxiv_id.replace("/", "_")
+    pdf_path = os.path.join(dest_dir, f"{safe_id}.pdf")
+    if os.path.exists(pdf_path) and os.path.getsize(pdf_path) > 0:
         return pdf_path
 
+    client = arxiv.Client()
     search = arxiv.Search(id_list=[arxiv_id])
-    for result in search.results():
+    for result in client.results(search):
         result.download_pdf(filename=pdf_path)
         return pdf_path
     return None
@@ -98,17 +127,47 @@ def download_gutenberg_txt(book_id: str, title: str, dest_dir: str) -> str:
 # ==========================
 
 def pdf_to_text(pdf_path: str) -> str:
+    """Extract text from a PDF.
+
+    arXiv PDFs often use 2-column layouts. A naive (y,x) block sort can interleave
+    columns, harming downstream paragraphing and retrieval. This extractor:
+      - filters simple headers/footers
+      - splits blocks into left/right columns using the page midpoint
+      - outputs left column top-to-bottom, then right column top-to-bottom
+    """
+
     doc = fitz.open(pdf_path)
-    text_out = []
+    text_out: list[str] = []
+
     for page in doc:
-        blocks = page.get_text("blocks")
-        # Blokları yukarıdan aşağıya, soldan sağa sırala (çift sütun desteği)
-        blocks.sort(key=lambda b: (b[1], b[0]))
+        blocks = page.get_text("blocks")  # (x0,y0,x1,y1,text,block_no,block_type)
+        if not blocks:
+            continue
+
+        h = page.rect.height
+        mid_x = page.rect.width / 2.0
+
+        left: list[tuple] = []
+        right: list[tuple] = []
+
         for b in blocks:
-            # Header/Footer temizliği için basit kontrol (sayfanın en tepesi ve en altı)
-            if b[1] < 50 or b[3] > page.rect.height - 50:
+            x0, y0, x1, y1, txt = b[0], b[1], b[2], b[3], b[4]
+            if not txt or not txt.strip():
                 continue
-            text_out.append(b[4])
+            # very simple header/footer removal
+            if y0 < 50 or y1 > h - 50:
+                continue
+            # classify by column
+            (left if x0 < mid_x else right).append((x0, y0, x1, y1, txt))
+
+        left.sort(key=lambda t: (t[1], t[0]))
+        right.sort(key=lambda t: (t[1], t[0]))
+
+        for _, _, _, _, txt in left:
+            text_out.append(txt)
+        for _, _, _, _, txt in right:
+            text_out.append(txt)
+
     doc.close()
     return "\n\n".join(text_out)
 
@@ -133,23 +192,18 @@ def clean_gutenberg_text(text: str) -> str:
     # 1. Satır sonlarını düzelt
     text = text.replace('\r', '\n')
 
-    # 2. Gutenberg Header Temizliği
-    # Genelde "*** START OF THE PROJECT..." ile başlar
-    start_marker = "*** START OF THE PROJECT"
-    idx = text.find(start_marker)
-    if idx != -1:
-        # Marker'dan sonraki satıra geç
-        text = text[idx:]
-        # Marker satırının bitimini bul
-        newline_idx = text.find('\n')
-        if newline_idx != -1:
-            text = text[newline_idx + 1:]
+    # 2) Gutenberg header/footer boundaries vary across books.
+    #    Common patterns:
+    #      "*** START OF THIS PROJECT GUTENBERG EBOOK ... ***"
+    #      "*** START OF THE PROJECT GUTENBERG EBOOK ... ***"
+    #    So we match more flexibly.
+    start_match = re.search(r"\*\*\*\s*START OF (THIS|THE) PROJECT GUTENBERG EBOOK.*?\*\*\*", text, flags=re.IGNORECASE | re.DOTALL)
+    if start_match:
+        text = text[start_match.end():]
 
-    # 3. Gutenberg Footer Temizliği
-    end_marker = "*** END OF THE PROJECT"
-    idx_end = text.find(end_marker)
-    if idx_end != -1:
-        text = text[:idx_end]
+    end_match = re.search(r"\*\*\*\s*END OF (THIS|THE) PROJECT GUTENBERG EBOOK.*?\*\*\*", text, flags=re.IGNORECASE | re.DOTALL)
+    if end_match:
+        text = text[:end_match.start()]
 
     # 4. Fazla boşlukları indirgeme
     text = re.sub(r'\n{3,}', '\n\n', text)
