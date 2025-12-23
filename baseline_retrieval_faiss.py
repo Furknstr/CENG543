@@ -10,7 +10,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 import torch
-
+import numpy as np  # Added for array handling if needed
 
 # --- SETTINGS (defaults; can be overridden with CLI args) ---
 BASE_DIR = "./long_context"
@@ -41,7 +41,7 @@ class BaselineRetriever:
     """
     Dense retrieval baseline:
       - encodes each paragraph/chunk with SentenceTransformers
-      - indexes vectors with FAISS IndexFlatL2
+      - indexes vectors with FAISS IndexFlatL2 OR IndexPQ (Compressed)
       - retrieves top-k nearest vectors for a query
     """
     def __init__(self, model_name: str = MODEL_NAME):
@@ -52,7 +52,7 @@ class BaselineRetriever:
         # FAISS internal id -> metadata
         self.metadata: List[Dict[str, Any]] = []  # {"doc_id","para_id","text"}
 
-    def load_and_index(self, jsonl_path: str, save_name: str = "baseline.faiss") -> None:
+    def load_and_index(self, jsonl_path: str, save_name: str = "baseline.faiss", compress: bool = False) -> None:
         """Read paragraphs, encode, build FAISS index, save it to disk."""
         if not os.path.exists(jsonl_path):
             raise FileNotFoundError(f"{jsonl_path} not found.")
@@ -88,16 +88,52 @@ class BaselineRetriever:
             convert_to_numpy=True,
         )
 
-        # If you want cosine similarity, uncomment both normalizations:
-        # faiss.normalize_L2(embeddings)
-
-        print("Building FAISS index (IndexFlatL2)...")
-        self.index = faiss.IndexFlatL2(self.dimension)
-        self.index.add(embeddings)
+        # ---------------------------------------------------------
+        # NEW: Compression Logic (Product Quantization)
+        # ---------------------------------------------------------
+        if compress:
+            print("[INFO] Compression enabled: Training Product Quantizer (PQ)...")
+            # For 384 dimensions (MiniLM), we split into m=48 sub-vectors (8 dims each).
+            # nbits=8 means each sub-vector is encoded in 1 byte.
+            m = 48
+            nbits = 8
+            self.index = faiss.IndexPQ(self.dimension, m, nbits)
+            
+            # PQ requires training on the distribution of vectors
+            self.index.train(embeddings)
+            print("[INFO] Adding vectors to Compressed Index...")
+            self.index.add(embeddings)
+        else:
+            print("Building FAISS index (IndexFlatL2)...")
+            self.index = faiss.IndexFlatL2(self.dimension)
+            self.index.add(embeddings)
 
         out_path = os.path.join(INDEX_DIR, save_name)
         faiss.write_index(self.index, out_path)
         print(f"Index saved: {out_path} ({len(embeddings)} vectors)")
+
+    def load_index_from_disk(self, index_name: str, jsonl_path: str):
+        """Helper to load existing index without re-embedding."""
+        index_path = os.path.join(INDEX_DIR, index_name)
+        if not os.path.exists(index_path):
+            raise FileNotFoundError(f"Index {index_path} not found.")
+        
+        print(f"[INFO] Loading index from {index_path}...")
+        self.index = faiss.read_index(index_path)
+        
+        # Reload metadata
+        self.metadata = []
+        with open(jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    try:
+                        data = json.loads(line)
+                        self.metadata.append({
+                            "doc_id": data["doc_id"],
+                            "para_id": int(data["para_id"]),
+                            "text": data["text"],
+                        })
+                    except: continue
 
     def search(self, query: str, k: int = 10) -> List[RetrievalResult]:
         """Return top-k nearest paragraphs for a query."""
@@ -298,11 +334,22 @@ def _parse_args():
     p.add_argument("--k", type=int, default=10, help="Top-k to retrieve")
     p.add_argument("--out", type=str, default="baseline_results.csv", help="Output CSV name (written under results/)")
     p.add_argument("--index-name", type=str, default="baseline.faiss", help="FAISS index filename (written under indices/)")
+    
+    # NEW ARGUMENT
+    p.add_argument("--compress", action="store_true", help="Use Product Quantization (PQ) for compressed embeddings")
+    p.add_argument("--rebuild", action="store_true", help="Force rebuild index even if it exists")
+    
     return p.parse_args()
 
 
 if __name__ == "__main__":
     args = _parse_args()
     retriever = BaselineRetriever()
-    retriever.load_and_index(args.paragraphs, save_name=args.index_name)
+    
+    # Logic to handle rebuild vs load
+    if args.rebuild or not os.path.exists(os.path.join(INDEX_DIR, args.index_name)):
+        retriever.load_and_index(args.paragraphs, save_name=args.index_name, compress=args.compress)
+    else:
+        retriever.load_index_from_disk(args.index_name, args.paragraphs)
+        
     evaluate_system(retriever, args.qa, k_eval=args.k, out_csv_name=args.out)

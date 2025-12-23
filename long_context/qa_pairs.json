@@ -6,8 +6,7 @@
     "answer": "The Transformer architecture dispensed with recurrence and relied entirely on an attention mechanism.",
     "gold_chunk_snippet": "eschewing recurrence and instead relying entirely on an attention mechanism",
     "gold_para_ids": [
-      5,
-      6
+      8
     ],
     "old_gold_para_ids": [
       2,
@@ -21,8 +20,7 @@
     "answer": "Positional Encodings were added to inject information about the relative or absolute position of the tokens.",
     "gold_chunk_snippet": "inject some information about the relative or absolute position of the tokens in the sequence",
     "gold_para_ids": [
-      20,
-      21
+      41
     ],
     "old_gold_para_ids": [
       9,
@@ -36,9 +34,8 @@
     "answer": "The Encoder stack is composed of 6 identical layers.",
     "gold_chunk_snippet": "composed of a stack of N = 6 identical layers",
     "gold_para_ids": [
-      8,
-      9,
-      10
+      15,
+      16
     ],
     "old_gold_para_ids": [
       3,
@@ -53,8 +50,7 @@
     "answer": "It is described as mapping a query and a set of key-value pairs to an output.",
     "gold_chunk_snippet": "mapping a query and a set of key-value pairs to an output",
     "gold_para_ids": [
-      11,
-      12
+      17
     ],
     "old_gold_para_ids": [
       4,
@@ -68,8 +64,7 @@
     "answer": "It established a new state-of-the-art BLEU score of 28.4.",
     "gold_chunk_snippet": "establishing a new state-of-the-art BLEU score of 28.4",
     "gold_para_ids": [
-      32,
-      33
+      65
     ],
     "old_gold_para_ids": [
       15,
@@ -83,8 +78,7 @@
     "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
     "gold_chunk_snippet": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.",
     "gold_para_ids": [
-      33,
-      34
+      7
     ],
     "old_gold_para_ids": [
       21,
@@ -98,8 +92,7 @@
     "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
     "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
     "gold_para_ids": [
-      40,
-      41
+      12
     ],
     "old_gold_para_ids": [
       26,
@@ -113,8 +106,7 @@
     "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
     "gold_chunk_snippet": "She is tolerable: but not handsome enough to tempt",
     "gold_para_ids": [
-      65,
-      66
+      26
     ],
     "old_gold_para_ids": [
       47,
@@ -128,8 +120,7 @@
     "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
     "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
     "gold_para_ids": [
-      437,
-      438
+      250
     ],
     "old_gold_para_ids": [
       304,
@@ -143,7 +134,7 @@
     "answer": "She came to confront Elizabeth about an 'alarming' report she had heard, stating that Elizabeth was soon to be united with her nephew, Mr. Darcy. She wanted to declare this report a 'scandalous falsehood' and insist that the marriage could never take place.",
     "gold_chunk_snippet": "A report of a most alarming nature reached me two days ago. I was told, that not only your sister was on the point of being most advantageously married",
     "gold_para_ids": [
-      1332
+      776
     ],
     "old_gold_para_ids": [
       845,
