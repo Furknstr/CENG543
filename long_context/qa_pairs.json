@@ -1,5 +1,110 @@
 [
   {
+    "qid": "gutenberg_1342_q1",
+    "doc_id": "gutenberg_1342",
+    "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
+    "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
+    "gold_chunk_snippet": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.",
+    "gold_para_ids": [
+      7
+    ],
+    "old_gold_para_ids": [
+      21,
+      22
+    ]
+  },
+  {
+    "qid": "gutenberg_1342_q2",
+    "doc_id": "gutenberg_1342",
+    "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
+    "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
+    "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
+    "gold_para_ids": [
+      12
+    ],
+    "old_gold_para_ids": [
+      26,
+      27
+    ]
+  },
+  {
+    "qid": "gutenberg_1342_q3",
+    "doc_id": "gutenberg_1342",
+    "question": "Why did Darcy refuse to dance with Elizabeth at the ball?",
+    "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
+    "gold_chunk_snippet": "She is tolerable: but not handsome enough to tempt",
+    "gold_para_ids": [
+      26
+    ],
+    "old_gold_para_ids": [
+      47,
+      48
+    ]
+  },
+  {
+    "qid": "gutenberg_1342_q4",
+    "doc_id": "gutenberg_1342",
+    "question": "Why did Charlotte Lucas accept the proposal to marry Mr. Collins?",
+    "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
+    "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
+    "gold_para_ids": [
+      250
+    ],
+    "old_gold_para_ids": [
+      304,
+      305
+    ]
+  },
+  {
+    "qid": "gutenberg_1342_q5",
+    "doc_id": "gutenberg_1342",
+    "question": "What kind of report did Lady Catherine say had reached her two days earlier?",
+    "answer": "She said an alarming report had reached her.",
+    "gold_chunk_snippet": "A report of a most alarming nature reached me two days ago.",
+    "gold_para_ids": [
+      776
+    ],
+    "old_gold_para_ids": [
+      845,
+      846
+    ]
+  },
+  {
+    "qid": "1503.07589_q1",
+    "doc_id": "1503.07589",
+    "question": "Which decay channels were used in the combined ATLAS and CMS data samples for the Higgs mass measurement?",
+    "answer": "The combined data samples used the H →γγ and H →ZZ →4ℓ decay channels.",
+    "gold_chunk_snippet": "in the H →γγ and H →ZZ →4ℓdecay channels."
+  },
+  {
+    "qid": "1503.07589_q2",
+    "doc_id": "1503.07589",
+    "question": "What integrated luminosities at 7 TeV and 8 TeV were analyzed for each experiment in Run 1?",
+    "answer": "Approximately 5 fb−1 at √s = 7 TeV and 20 fb−1 at √s = 8 TeV.",
+    "gold_chunk_snippet": "approximately 5 fb−1 of integrated luminosity at √s = 7 TeV, and 20 fb−1 at √s = 8 TeV"
+  },
+  {
+    "qid": "1503.07589_q3",
+    "doc_id": "1503.07589",
+    "question": "Why were only the H →γγ and H →ZZ →4ℓ channels used in the combination?",
+    "answer": "Because these two channels offer the best mass resolution.",
+    "gold_chunk_snippet": "because these two channels offer the best mass resolution."
+  },
+  {
+    "qid": "1503.07589_q4",
+    "doc_id": "1503.07589",
+    "question": "What is the signal-to-background ratio in the H  -> ZZ  -> 4? channel?",
+    "answer": "It is larger than 1.",
+    "gold_chunk_snippet": "signal-to-background ratio larger than 1."
+  },
+  {
+    "qid": "1503.07589_q5",
+    "doc_id": "1503.07589",
+    "question": "What combined Higgs boson mass value is reported from the ATLAS and CMS data?",
+    "answer": "mH = 125.09 ± 0.24 GeV (equivalently 125.09 ± 0.21 (stat.) ± 0.11 (syst.) GeV).",
+    "gold_chunk_snippet": "mH = 125.09 ± 0.24 GeV = 125.09 ± 0.21 (stat.) ± 0.11 (syst.) GeV"
+  },
+  {
     "qid": "1706.03762_q1",
     "doc_id": "1706.03762",
     "question": "Which mechanism that prevents parallelization during training did the Transformer architecture dispense with?",
@@ -72,73 +177,143 @@
     ]
   },
   {
-    "qid": "gutenberg_1342_q1",
-    "doc_id": "gutenberg_1342",
-    "question": "According to the opening sentence of the novel, what is a single man in possession of a good fortune universally acknowledged to be in want of?",
-    "answer": "It is a truth universally acknowledged that he must be in want of a wife.",
-    "gold_chunk_snippet": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.",
-    "gold_para_ids": [
-      7
-    ],
-    "old_gold_para_ids": [
-      21,
-      22
-    ]
+    "qid": "1805.08392_q1",
+    "doc_id": "1805.08392",
+    "question": "What does the paper compute for symmetric algebras with radical cube zero?",
+    "answer": "It computes the number of two-term tilting complexes for an arbitrary symmetric algebra with radical cube zero over an algebraically closed field.",
+    "gold_chunk_snippet": "we compute the number of two-term tilting complexes for an arbitrary symmetric algebra with radical cube zero over an algebraically closed ﬁeld."
   },
   {
-    "qid": "gutenberg_1342_q2",
-    "doc_id": "gutenberg_1342",
-    "question": "Which of his daughters does Mr. Bennet appreciate the most due to her quickness?",
-    "answer": "Mr. Bennet thinks Lizzy (Elizabeth) has something more of quickness than her sisters.",
-    "gold_chunk_snippet": "Lizzy has something more of quickness than her sisters",
-    "gold_para_ids": [
-      12
-    ],
-    "old_gold_para_ids": [
-      26,
-      27
-    ]
+    "qid": "1805.08392_q2",
+    "doc_id": "1805.08392",
+    "question": "In tilting theory, what is a tilting complex described as?",
+    "answer": "It is described as a generalization of a progenerator in Morita theory.",
+    "gold_chunk_snippet": "a tilting complex which is a generalization of a progenerator in Morita theory."
   },
   {
-    "qid": "gutenberg_1342_q3",
-    "doc_id": "gutenberg_1342",
-    "question": "Why did Darcy refuse to dance with Elizabeth at the ball?",
-    "answer": "He found her 'tolerable' but not handsome enough to tempt him.",
-    "gold_chunk_snippet": "She is tolerable: but not handsome enough to tempt",
-    "gold_para_ids": [
-      26
-    ],
-    "old_gold_para_ids": [
-      47,
-      48
-    ]
+    "qid": "1805.08392_q3",
+    "doc_id": "1805.08392",
+    "question": "For a symmetric algebra A, how are tilting complexes related to silting complexes?",
+    "answer": "Tilting complexes coincide with silting complexes for a symmetric algebra A.",
+    "gold_chunk_snippet": "tilting complexes coincide with silting complexes for a symmetric algebra A"
   },
   {
-    "qid": "gutenberg_1342_q4",
-    "doc_id": "gutenberg_1342",
-    "question": "Why did Charlotte Lucas accept the proposal to marry Mr. Collins?",
-    "answer": "She accepted him solely from the desire of an establishment (security), rather than romantic feelings.",
-    "gold_chunk_snippet": "accepted him solely from the pure and disinterested desire of an establishment",
-    "gold_para_ids": [
-      250
-    ],
-    "old_gold_para_ids": [
-      304,
-      305
-    ]
+    "qid": "1805.08392_q4",
+    "doc_id": "1805.08392",
+    "question": "What does Theorem 1.2 say the number # 2-tilt A depends on?",
+    "answer": "It depends only on the graph G of A.",
+    "gold_chunk_snippet": "the number # 2-tilt A depends only on the graph G of A"
   },
   {
-    "qid": "gutenberg_1342_q5",
-    "doc_id": "gutenberg_1342",
-    "question": "What was the specific reason Lady Catherine de Bourgh gave for travelling to Longbourn to visit Elizabeth Bennet?",
-    "answer": "She came to confront Elizabeth about an 'alarming' report she had heard, stating that Elizabeth was soon to be united with her nephew, Mr. Darcy. She wanted to declare this report a 'scandalous falsehood' and insist that the marriage could never take place.",
-    "gold_chunk_snippet": "A report of a most alarming nature reached me two days ago. I was told, that not only your sister was on the point of being most advantageously married",
-    "gold_para_ids": [
-      776
-    ],
-    "old_gold_para_ids": [
-      845,
-      846
-    ]
+    "qid": "1805.08392_q5",
+    "doc_id": "1805.08392",
+    "question": "How is the double quiver QG of a graph G defined?",
+    "answer": "For each edge connecting i and j, it has two arrows a∗: i →j and a∗∗: j →i.",
+    "gold_chunk_snippet": "We draw two arrows a∗: i →j and a∗∗: j →i whenever there exists an edge a of G connecting i and j."
+  },
+  {
+    "qid": "1810.04805_q1",
+    "doc_id": "1810.04805",
+    "question": "What does BERT stand for?",
+    "answer": "Bidirectional Encoder Representations from Transformers.",
+    "gold_chunk_snippet": "BERT, which stands for Bidirectional Encoder Representations from Transformers."
+  },
+  {
+    "qid": "1810.04805_q2",
+    "doc_id": "1810.04805",
+    "question": "What kind of representations does BERT pre-train?",
+    "answer": "Deep bidirectional representations from unlabeled text.",
+    "gold_chunk_snippet": "train deep bidirectional representations from unlabeled text"
+  },
+  {
+    "qid": "1810.04805_q3",
+    "doc_id": "1810.04805",
+    "question": "What type of pre-training objective does BERT use to remove the unidirectionality constraint?",
+    "answer": "A masked language model (MLM) objective.",
+    "gold_chunk_snippet": "using a masked language model (MLM) pre-training objective"
+  },
+  {
+    "qid": "1810.04805_q4",
+    "doc_id": "1810.04805",
+    "question": "What additional task is used along with MLM to pre-train text-pair representations?",
+    "answer": "Next sentence prediction.",
+    "gold_chunk_snippet": "we also use a “next sentence prediction” task that jointly pre- trains text-pair representations."
+  },
+  {
+    "qid": "1810.04805_q5",
+    "doc_id": "1810.04805",
+    "question": "What limitation of standard language models does BERT aim to address?",
+    "answer": "They are unidirectional, which limits pre-training for tasks needing both left and right context.",
+    "gold_chunk_snippet": "standard language models are unidirectional"
+  },
+  {
+    "qid": "1905.03777_q1",
+    "doc_id": "1905.03777",
+    "question": "What kind of entropy does the paper introduce?",
+    "answer": "It introduces holographic Shannon entropy.",
+    "gold_chunk_snippet": "so we call the quantity holographic Shannon entropy"
+  },
+  {
+    "qid": "1905.03777_q2",
+    "doc_id": "1905.03777",
+    "question": "What does the new construction add compared to covariant holographic entanglement entropy?",
+    "answer": "It adds a term proportional to boundary region volume.",
+    "gold_chunk_snippet": "with the addition of a new term proportional to boundary region volume"
+  },
+  {
+    "qid": "1905.03777_q3",
+    "doc_id": "1905.03777",
+    "question": "What key property of Shannon entropy does holographic Shannon entropy obey?",
+    "answer": "It obeys monotonicity.",
+    "gold_chunk_snippet": "holographic Shannon entropy obeys monotonicity"
+  },
+  {
+    "qid": "1905.03777_q4",
+    "doc_id": "1905.03777",
+    "question": "In the static case, what is said to exist on the boundary?",
+    "answer": "A classical probability distribution on random variables locally distributed on the boundary.",
+    "gold_chunk_snippet": "there must exist some classical probability distribution on random variables locally distributed on the boundary"
+  },
+  {
+    "qid": "1905.03777_q5",
+    "doc_id": "1905.03777",
+    "question": "The holographic Shannon entropy of a region A is equal to the outer entropy of what?",
+    "answer": "The entanglement wedge of A with the complement's entanglement wedge held fixed.",
+    "gold_chunk_snippet": "equal to the outer entropy of the entanglement wedge of A with the entanglement wedge of the complement of A held ?xed"
+  },
+  {
+    "qid": "1910.01108_q1",
+    "doc_id": "1910.01108",
+    "question": "What is the name of the smaller model proposed in the paper?",
+    "answer": "DistilBERT.",
+    "gold_chunk_snippet": "called DistilBERT"
+  },
+  {
+    "qid": "1910.01108_q2",
+    "doc_id": "1910.01108",
+    "question": "By how much does the method reduce the size of a BERT model?",
+    "answer": "By 40%.",
+    "gold_chunk_snippet": "reduce the size of a BERT model by 40%"
+  },
+  {
+    "qid": "1910.01108_q3",
+    "doc_id": "1910.01108",
+    "question": "What percent of language understanding capabilities does DistilBERT retain?",
+    "answer": "97%.",
+    "gold_chunk_snippet": "retaining 97% of its language understanding capabilities"
+  },
+  {
+    "qid": "1910.01108_q4",
+    "doc_id": "1910.01108",
+    "question": "What losses are combined in the triple loss?",
+    "answer": "Language modeling, distillation, and cosine-distance losses.",
+    "gold_chunk_snippet": "triple loss combining language modeling, distillation and cosine-distance losses"
+  },
+  {
+    "qid": "1910.01108_q5",
+    "doc_id": "1910.01108",
+    "question": "What does the paper say about the speed of the smaller models at inference time?",
+    "answer": "They are lighter and faster at inference time.",
+    "gold_chunk_snippet": "resulting in models that are lighter and faster at inference time"
   }
 ]
