@@ -214,7 +214,20 @@ def main():
     ap.add_argument(
         "--arxiv_ids",
         nargs="+",
-        default=["1706.03762", "1810.04805", "1910.01108"],
+        default=[
+            "1503.07589",
+            "1706.03762", 
+            "1805.08392",
+            "1810.04805", 
+            "1905.03777",
+            "1910.01108",
+            "2003.10555",
+            "2006.16928",
+            "2102.09554",
+            "2103.01955",
+            "2104.07302",
+            "2201.12345"
+        ],
         help="List of arXiv IDs to include (cleaned txt must exist).",
     )
     ap.add_argument("--gutenberg_id", default="1342")
