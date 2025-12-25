@@ -19,7 +19,7 @@ DEFAULT_QA_FILE = os.path.join(BASE_DIR, "qa_pairs.json")
 INDEX_DIR = os.path.join(BASE_DIR, "indices")
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "BAAI/bge-base-en-v1.5" #all-MiniLM-L6-v2 - all-mpnet-base-v2 - BAAI/bge-base-en-v1.5
 
 os.makedirs(INDEX_DIR, exist_ok=True)
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -44,11 +44,12 @@ class BaselineRetriever:
       - indexes vectors with FAISS IndexFlatL2 OR IndexPQ (Compressed)
       - retrieves top-k nearest vectors for a query
     """
-    def __init__(self, model_name: str = MODEL_NAME):
+    def __init__(self, model_name: str = MODEL_NAME, *, device: Optional[str] = None, use_cosine: bool = False):
         print(f"Model loading: {model_name} ...")
-        self.model = SentenceTransformer(model_name)
+        self.model = SentenceTransformer(model_name, device=device)
         self.dimension = self.model.get_sentence_embedding_dimension()
         self.index: Optional[faiss.Index] = None
+        self.use_cosine = bool(use_cosine)
         # FAISS internal id -> metadata
         self.metadata: List[Dict[str, Any]] = []  # {"doc_id","para_id","text"}
 
@@ -87,6 +88,8 @@ class BaselineRetriever:
             show_progress_bar=True,
             convert_to_numpy=True,
         )
+        if self.use_cosine:
+            faiss.normalize_L2(embeddings)
 
         # ---------------------------------------------------------
         # NEW: Compression Logic (Product Quantization)
@@ -104,8 +107,12 @@ class BaselineRetriever:
             print("[INFO] Adding vectors to Compressed Index...")
             self.index.add(embeddings)
         else:
-            print("Building FAISS index (IndexFlatL2)...")
-            self.index = faiss.IndexFlatL2(self.dimension)
+            if self.use_cosine:
+                print("Building FAISS index (IndexFlatIP) for cosine similarity...")
+                self.index = faiss.IndexFlatIP(self.dimension)
+            else:
+                print("Building FAISS index (IndexFlatL2)...")
+                self.index = faiss.IndexFlatL2(self.dimension)
             self.index.add(embeddings)
 
         out_path = os.path.join(INDEX_DIR, save_name)
@@ -141,8 +148,8 @@ class BaselineRetriever:
             raise ValueError("Index not built yet. Call load_and_index() first.")
 
         query_vec = self.model.encode([query], convert_to_numpy=True)
-        # If using cosine similarity:
-        # faiss.normalize_L2(query_vec)
+        if self.use_cosine:
+            faiss.normalize_L2(query_vec)
 
         distances, indices = self.index.search(query_vec, k)
 
@@ -322,8 +329,15 @@ def evaluate_system(
 
     df = pd.DataFrame(rows)
     csv_path = os.path.join(RESULTS_DIR, out_csv_name)
-    df.to_csv(csv_path, index=False)
-    print(f"Detailed log saved to: {csv_path}")
+    try:
+        df.to_csv(csv_path, index=False)
+        print(f"Detailed log saved to: {csv_path}")
+    except PermissionError:
+        ts = int(time.time())
+        alt_name = f"{os.path.splitext(out_csv_name)[0]}_{ts}.csv"
+        alt_path = os.path.join(RESULTS_DIR, alt_name)
+        df.to_csv(alt_path, index=False)
+        print(f"[WARN] Could not write {csv_path}. Saved to: {alt_path}")
 
 
 def _parse_args():
@@ -338,13 +352,15 @@ def _parse_args():
     # NEW ARGUMENT
     p.add_argument("--compress", action="store_true", help="Use Product Quantization (PQ) for compressed embeddings")
     p.add_argument("--rebuild", action="store_true", help="Force rebuild index even if it exists")
+    p.add_argument("--cosine", action="store_true", help="Use cosine similarity (L2-normalized vectors)")
+    p.add_argument("--device", type=str, default=None, help="Force device for SentenceTransformer (e.g., cpu, cuda)")
     
     return p.parse_args()
 
 
 if __name__ == "__main__":
     args = _parse_args()
-    retriever = BaselineRetriever()
+    retriever = BaselineRetriever(device=args.device, use_cosine=args.cosine)
     
     # Logic to handle rebuild vs load
     if args.rebuild or not os.path.exists(os.path.join(INDEX_DIR, args.index_name)):
