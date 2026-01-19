@@ -1,0 +1,9 @@
+requests
+PyMuPDF
+arxiv
+faiss-cpu
+pandas
+sentence-transformers
+tqdm
+torch
+numpy
